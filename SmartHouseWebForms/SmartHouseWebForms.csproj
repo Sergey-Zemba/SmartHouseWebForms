@@ -65,10 +65,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\DeviceControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DeviceControl.ascx.cs">
+      <DependentUpon>DeviceControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DeviceControl.ascx.designer.cs">
+      <DependentUpon>DeviceControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -76,8 +84,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ServerControls\AirConditionerControl.cs" />
-    <Compile Include="ServerControls\CameraControl.cs" />
     <Compile Include="SmartHouse\Devices\AirConditioner.cs" />
     <Compile Include="SmartHouse\Devices\Camera.cs" />
     <Compile Include="SmartHouse\Devices\Device.cs" />

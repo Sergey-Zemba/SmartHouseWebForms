@@ -8,9 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Conditioner" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Loudspeakers" />
         <br />
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" style="margin-left: 0px" Text="Add Camera" />
+        
     </form>
 </body>
 </html>

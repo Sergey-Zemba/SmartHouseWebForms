@@ -1,37 +1,32 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SmartHouseWebForms.ServerControls;
+using SmartHouseWebForms.Controls;
 using SmartHouseWebForms.SmartHouse.Devices;
 
 namespace SmartHouseWebForms
 {
     public partial class Default : System.Web.UI.Page
     {
-        private SmartHouse.SmartHouse _house = new SmartHouse.SmartHouse();
+        private List<DeviceControl> controls = new List<DeviceControl>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (var control in form1.Controls)
+            foreach (DeviceControl control in controls)
             {
-                Response.Write(control);
+                
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            AirConditioner conditioner = new AirConditioner();
-            _house.AddDevice(conditioner);
-            form1.Controls.Add(new AirConditionerControl(conditioner));
+            Loudspeakers l = new SamsungLoudspeakers();
+            DeviceControl deviceControl = new DeviceControl(l);
+
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Camera camera = new Camera();
-            _house.AddDevice(camera);
-            form1.Controls.Add(new CameraControl(camera));
-        }
     }
 }
