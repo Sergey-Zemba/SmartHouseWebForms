@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SmartHouseWebForms.Default" %>
+<%@ Import Namespace="SmartHouseWebForms.Controls" %>
+<%@ Register Src="~/Controls/DeviceControl.ascx" TagPrefix="device" TagName ="MyDevice" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +12,13 @@
     <form id="form1" runat="server">
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Loudspeakers" />
         <br />
-        
+        <% foreach (var element in Session)
+           {
+                { %>
+                <device:MyDevice runat="server"/>
+        <%
+        }
+           } %>
     </form>
 </body>
 </html>

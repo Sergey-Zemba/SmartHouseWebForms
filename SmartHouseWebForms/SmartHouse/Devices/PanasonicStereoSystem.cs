@@ -2,7 +2,7 @@
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
-    class PanasonicStereoSystem : StereoSystem, IBass
+    class PanasonicStereoSystem : StereoSystem
     {
         public PanasonicStereoSystem(PanasonicLoudspeakers p)
             : base(p)

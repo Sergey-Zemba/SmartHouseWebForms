@@ -1,8 +1,9 @@
 ﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
-    class PanasonicHomeCinema : HomeCinema, IBass, IThreeDimensional
+    class PanasonicHomeCinema : HomeCinema
     {
         public PanasonicHomeCinema(PanasonicTv t, PanasonicStereoSystem s)
             : base(t, s)

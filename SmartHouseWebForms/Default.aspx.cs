@@ -12,20 +12,17 @@ namespace SmartHouseWebForms
 {
     public partial class Default : System.Web.UI.Page
     {
-        private List<DeviceControl> controls = new List<DeviceControl>();
+        private static int _index = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (DeviceControl control in controls)
-            {
-                
-            }
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Loudspeakers l = new SamsungLoudspeakers();
-            DeviceControl deviceControl = new DeviceControl(l);
-
+            DeviceControl control = new DeviceControl();
+            Session.Add(_index.ToString(), control);
+            _index++;
         }
 
     }

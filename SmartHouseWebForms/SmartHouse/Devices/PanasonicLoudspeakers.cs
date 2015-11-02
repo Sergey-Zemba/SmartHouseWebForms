@@ -1,31 +1,34 @@
 ﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
     class PanasonicLoudspeakers : Loudspeakers, IBass
     {
-        private bool _bass;
+        private BassState _bassState;
+        public BassState BassState
+        {
+            get
+            {
+                return _bassState;
+            }
 
-
+        }
         public void BassOn()
         {
-            _bass = true;
+            _bassState = BassState.On;
         }
 
         public void BassOff()
         {
-            _bass = false;
+            _bassState = BassState.Off;
         }
         public override string ToString()
         {
             string str = base.ToString();
-            if (_bass)
+            if (BassState == BassState.On)
             {
                 str += " Bass is on";
-            }
-            else
-            {
-                str += " Bass is off";
             }
             return str;
         }
