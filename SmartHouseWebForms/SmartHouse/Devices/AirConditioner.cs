@@ -2,7 +2,7 @@
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
-    class AirConditioner : Device, ITemperature
+    public class AirConditioner : Device, ITemperature
     {
         private int _temperature;
 

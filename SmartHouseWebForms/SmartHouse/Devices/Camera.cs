@@ -3,7 +3,7 @@ using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
-    class Camera : Device, IRecording
+    public class Camera : Device, IRecording
     {
         private RecordMode _recordMode;
         public void StartRecording()

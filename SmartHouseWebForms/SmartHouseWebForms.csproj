@@ -76,7 +76,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ServerControls\AirConditionerContol.cs" />
+    <Compile Include="ServerControls\AirConditionerControl.cs" />
+    <Compile Include="ServerControls\CameraControl.cs" />
     <Compile Include="SmartHouse\Devices\AirConditioner.cs" />
     <Compile Include="SmartHouse\Devices\Camera.cs" />
     <Compile Include="SmartHouse\Devices\Device.cs" />
