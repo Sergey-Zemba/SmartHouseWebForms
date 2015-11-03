@@ -2,7 +2,7 @@
 
 namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface IBass
+    public interface IBass
     {
         BassState BassState { get; }
         void BassOn();
