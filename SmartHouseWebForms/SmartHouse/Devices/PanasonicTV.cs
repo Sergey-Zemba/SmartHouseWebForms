@@ -7,7 +7,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     {
         private TvMode _mode;
 
-
+        public PanasonicTv(int id)
+            : base(id)
+        {
+        }
         public void ThreeDOn()
         {
             _mode = TvMode.ThreeDMode;
@@ -27,5 +30,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             }
             return str;
         }
+
+        
     }
 }

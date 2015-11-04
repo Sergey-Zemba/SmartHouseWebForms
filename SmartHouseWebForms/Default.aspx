@@ -12,20 +12,30 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Loudspeakers" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Panasonic Loudspeakers" />
         <br />
-        <% Dictionary<string, Device> devices = (Dictionary<string, Device>)Session["devices"];
-           foreach (KeyValuePair<string, Device> pair in devices)
-           { %>
-        <div>
-            <device:MyDevice runat="server"/>
-            <asp:Button ID="Button2" runat="server" Text="Remove" OnClick="Button2_Click" />
-            <%if(pair.Value is IBass){%>
-            <bass:MyBass runat="server"></bass:MyBass>
-            <%} %>
-        </div>
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Add Samsung Loudspeakers" />
+        <br />
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add Camera" />
+        <br />
+        <% List<Device> devices = (List<Device>)Session["devices"];
+           foreach (Device device in devices)
+           {%>
+               <div>
+                   <asp:Repeater ID="Repeater1" runat="server">
+            <ItemTemplate>
+                    
+                    <device:MyDevice runat="server" />
+                    
+            </ItemTemplate>
+            
+        </asp:Repeater>
+               </div>
+           <%} %>
+        
+
                
-           <% } %>
+
     </form>
 </body>
 </html>

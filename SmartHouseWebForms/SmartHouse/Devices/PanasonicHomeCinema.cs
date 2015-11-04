@@ -5,8 +5,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     class PanasonicHomeCinema : HomeCinema
     {
-        public PanasonicHomeCinema(PanasonicTv t, PanasonicStereoSystem s)
-            : base(t, s)
+        public PanasonicHomeCinema(int id, PanasonicTv t, PanasonicStereoSystem s)
+            : base(id, t, s)
         {
 
         }

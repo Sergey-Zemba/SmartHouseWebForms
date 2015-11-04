@@ -4,8 +4,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     class PanasonicStereoSystem : StereoSystem
     {
-        public PanasonicStereoSystem(PanasonicLoudspeakers p)
-            : base(p)
+        public PanasonicStereoSystem(int id, PanasonicLoudspeakers p)
+            : base(id, p)
         {
 
         }

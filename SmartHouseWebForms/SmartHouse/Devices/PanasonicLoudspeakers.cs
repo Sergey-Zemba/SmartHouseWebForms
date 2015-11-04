@@ -6,6 +6,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     class PanasonicLoudspeakers : Loudspeakers, IBass
     {
         private BassState _bassState;
+        public PanasonicLoudspeakers(int id)
+            : base(id)
+        {
+        }
         public BassState BassState
         {
             get
@@ -32,5 +36,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             }
             return str;
         }
+
+        
     }
 }

@@ -4,7 +4,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     abstract class HomeCinema : Device, IVolumeable
     {
-        public HomeCinema(Tv tv, StereoSystem stereoSystem)
+        public HomeCinema(int id, Tv tv, StereoSystem stereoSystem) : base(id)
         {
             Tv = tv;
             StereoSystem = stereoSystem;

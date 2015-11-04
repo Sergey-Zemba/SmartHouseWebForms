@@ -2,5 +2,8 @@
 {
     class SamsungLoudspeakers : Loudspeakers
     {
+        public SamsungLoudspeakers(int id) : base(id)
+        {
+        }
     }
 }

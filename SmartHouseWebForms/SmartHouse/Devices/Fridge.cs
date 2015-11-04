@@ -7,6 +7,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     {
         private OpenState _openState;
         private int _temperature;
+        public Fridge(int id)
+            : base(id)
+        {
+        }
 
         public OpenState OpenState
         {
@@ -59,5 +63,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             return str;
         }
 
+        
     }
 }

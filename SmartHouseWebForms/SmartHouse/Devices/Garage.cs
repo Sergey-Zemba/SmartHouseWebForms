@@ -6,6 +6,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     class Garage : Device, IOpenable
     {
         private OpenState _openState;
+        public Garage(int id)
+            : base(id)
+        {
+        }
         public OpenState OpenState
         {
             get
@@ -28,5 +32,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         }
 
 
+        
     }
 }

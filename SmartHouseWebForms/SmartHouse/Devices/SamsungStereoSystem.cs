@@ -2,8 +2,8 @@
 {
     class SamsungStereoSystem : StereoSystem
     {
-        public SamsungStereoSystem(SamsungLoudspeakers s)
-            : base(s)
+        public SamsungStereoSystem(int id, SamsungLoudspeakers s)
+            : base(id, s)
         {
 
         }

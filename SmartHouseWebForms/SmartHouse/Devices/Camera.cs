@@ -6,6 +6,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     public class Camera : Device, IRecording
     {
         private RecordMode _recordMode;
+        public Camera(int id)
+            : base(id)
+        {
+        }
         public void StartRecording()
         {
             _recordMode = RecordMode.Record;
@@ -25,5 +29,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             }
             return str;
         }
+
+        
     }
 }

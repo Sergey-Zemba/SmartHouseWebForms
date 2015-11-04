@@ -7,6 +7,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     {
         private int _volume;
         private RecordMode _recordMode;
+        public Tv(int id)
+            : base(id)
+        {
+        }
 
         public virtual void AddVolume()
         {
@@ -56,5 +60,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             }
             return str;
         }
+
+        
     }
 }

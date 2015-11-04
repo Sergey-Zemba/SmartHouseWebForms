@@ -6,7 +6,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     {
         private int _temperature;
 
-        public AirConditioner()
+        public AirConditioner(int id) : base(id)
         {
             _temperature = 18;
         }

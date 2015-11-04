@@ -5,6 +5,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     abstract class Loudspeakers : Device, IVolumeable
     {
         private int _volume;
+        public Loudspeakers(int id)
+            : base(id)
+        {
+        }
 
         public virtual void AddVolume()
         {
@@ -41,5 +45,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             str += " volume = " + _volume;
             return str;
         }
+
+        
     }
 }

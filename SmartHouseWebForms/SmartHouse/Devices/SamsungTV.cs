@@ -2,5 +2,8 @@
 {
     class SamsungTv : Tv
     {
+        public SamsungTv(int id) : base(id)
+        {
+        }
     }
 }

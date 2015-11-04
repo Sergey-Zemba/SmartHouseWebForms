@@ -4,7 +4,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     abstract class StereoSystem : Device, IVolumeable
     {
-        public StereoSystem(Loudspeakers loudspeakers)
+        public StereoSystem(int id, Loudspeakers loudspeakers) : base(id)
         {
             Loudspeakers = loudspeakers;
         }

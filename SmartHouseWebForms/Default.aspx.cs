@@ -7,39 +7,68 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SmartHouseWebForms.Controls;
 using SmartHouseWebForms.SmartHouse.Devices;
+using SmartHouseWebForms.SmartHouse.Interfaces;
 
 namespace SmartHouseWebForms
 {
+
+
     public partial class Default : System.Web.UI.Page
     {
-        private static int _index = 0;
+        public object currentItem = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                Dictionary<string, Device> devices = new Dictionary<string, Device>();
+                List<Device> devices = new List<Device>();
                 Session["devices"] = devices;
             }
             else
             {
-                Button2 = new Button();
-                Button2.ID = UniqueID;
+                List<Device> devices = (List<Device>)Session["devices"];
+                Repeater1.DataSource = devices;
+                Repeater1.DataBind();
+                Session["devices"] = devices;
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Dictionary<string, Device> devices = (Dictionary<string, Device>) Session["devices"];
-            devices.Add(Button2.ID, new PanasonicLoudspeakers());
+            List<Device> devices = (List<Device>) Session["devices"];
+            devices.Add(new PanasonicLoudspeakers(devices.Count));
+            Repeater1.DataSource = devices;
+            Repeater1.DataBind();
+            Session["devices"] = devices;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            List<Device> devices = (List<Device>)Session["devices"];
+            devices.Add(new SamsungLoudspeakers(devices.Count));
+            Repeater1.DataSource = devices;
+            Repeater1.DataBind();
             Session["devices"] = devices;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Dictionary<string, Device> devices = (Dictionary<string, Device>)Session["devices"];
-            devices.Remove(Button2.ID);
+            List<Device> devices = (List<Device>)Session["devices"];
+            devices.Add(new Camera(devices.Count));
+            Repeater1.DataSource = devices;
+            Repeater1.DataBind();
             Session["devices"] = devices;
         }
 
+        protected void ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.DataItem is IBass)
+            {
+                currentItem = e.Item.DataItem;
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

@@ -5,7 +5,15 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     public abstract class Device : ISwitchable
     {
+        private int _id;
         private SwitchState _switchState;
+
+        public Device(int id)
+        {
+            Id = _id;
+        }
+
+        public int Id { get; set; }
         public SwitchState SwitchState
         {
             get
