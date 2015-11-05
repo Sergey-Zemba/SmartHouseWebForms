@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.States
 {
-    enum OpenState
+    public enum OpenState
     {
         Close,
         Open

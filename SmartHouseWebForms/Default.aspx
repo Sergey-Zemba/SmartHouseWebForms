@@ -18,20 +18,13 @@
         <br />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add Camera" />
         <br />
-        <% List<Device> devices = (List<Device>)Session["devices"];
-           foreach (Device device in devices)
-           {%>
-               <div>
-                   <asp:Repeater ID="Repeater1" runat="server">
+        <asp:Repeater runat="server" ID="Repeater1">
             <ItemTemplate>
-                    
-                    <device:MyDevice runat="server" />
-                    
+                <%# Container.DataItem %>
+                <device:MyDevice runat="server" />
+                <bass:MyBass runat="server" />
             </ItemTemplate>
-            
         </asp:Repeater>
-               </div>
-           <%} %>
         
 
                

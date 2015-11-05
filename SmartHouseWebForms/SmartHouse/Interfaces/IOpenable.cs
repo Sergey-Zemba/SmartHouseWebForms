@@ -2,7 +2,7 @@
 
 namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface IOpenable
+    public interface IOpenable
     {
         OpenState OpenState { get; }
         void Open();

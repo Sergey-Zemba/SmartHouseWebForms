@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface ITemperature
+    public interface ITemperature
     {
         void AddTemperture();
         void DecreaseTemperature();

@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface IRecording
+    public interface IRecording
     {
         void StartRecording();
         void StopRecording();

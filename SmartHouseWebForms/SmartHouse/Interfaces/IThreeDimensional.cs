@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface IThreeDimensional
+    public interface IThreeDimensional
     {
         void ThreeDOn();
         void ThreeDOff();
