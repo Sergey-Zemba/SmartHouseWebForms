@@ -13,27 +13,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Panasonic Loudspeakers" />
+        <asp:Button ID="Button1" runat="server" Text="Add Panasonic Loudspeakers" />
         <br />
-        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Add Samsung Loudspeakers" />
+        <asp:Button ID="Button2" runat="server" Text="Add Camera" />
         <br />
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add Camera" />
+        <asp:Button ID="Button3" runat="server" Text="Add Samsung Loudspeakers" />
         <br />
-        <% List<Device> devices = (List<Device>)Session["devices"];
-           foreach (Device device in devices)
-           {%>
-               <div>
-               <device:MyDevice runat="server" />
-               <%if (device is IBass)
-               {%>
-                   <bass:MyBass runat="server" />
-               <%}
-                 else if(device is IRecording)
-                 {%>
-                     <rec:Myrec runat="server" />
-                 <%}%>
-                 </div> 
-           <%} %>
-    </form>
+        <br />
+   </form>
 </body>
 </html>

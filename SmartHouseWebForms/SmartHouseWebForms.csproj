@@ -65,66 +65,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Controls\BassControl.ascx" />
-    <Content Include="Controls\DeviceControl.ascx" />
-    <Content Include="Controls\OpenControl.ascx" />
-    <Content Include="Controls\RecordingControl.ascx" />
-    <Content Include="Controls\TemperatureControl.ascx" />
-    <Content Include="Controls\ThreeDControl.ascx" />
-    <Content Include="Controls\VolumeControl.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BassControl.ascx.cs">
-      <DependentUpon>BassControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\BassControl.ascx.designer.cs">
-      <DependentUpon>BassControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DeviceControl.ascx.cs">
-      <DependentUpon>DeviceControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\DeviceControl.ascx.designer.cs">
-      <DependentUpon>DeviceControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\OpenControl.ascx.cs">
-      <DependentUpon>OpenControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\OpenControl.ascx.designer.cs">
-      <DependentUpon>OpenControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RecordingControl.ascx.cs">
-      <DependentUpon>RecordingControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\RecordingControl.ascx.designer.cs">
-      <DependentUpon>RecordingControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TemperatureControl.ascx.cs">
-      <DependentUpon>TemperatureControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\TemperatureControl.ascx.designer.cs">
-      <DependentUpon>TemperatureControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ThreeDControl.ascx.cs">
-      <DependentUpon>ThreeDControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ThreeDControl.ascx.designer.cs">
-      <DependentUpon>ThreeDControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\VolumeControl.ascx.cs">
-      <DependentUpon>VolumeControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\VolumeControl.ascx.designer.cs">
-      <DependentUpon>VolumeControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

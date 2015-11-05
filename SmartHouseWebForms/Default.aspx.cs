@@ -26,30 +26,28 @@ namespace SmartHouseWebForms
             {
                 List<Device> devices = (List<Device>)Session["devices"];
                 Session["devices"] = devices;
+                Button1.Click += ButtonAdd_Click;
+                Button2.Click += ButtonAdd_Click;
+                Button3.Click += ButtonAdd_Click;
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             List<Device> devices = (List<Device>) Session["devices"];
-            devices.Add(new PanasonicLoudspeakers(devices.Count));
+            switch (((Button) sender).ID)
+            {
+                case "Button1":
+                    devices.Add(new PanasonicLoudspeakers(devices.Count));
+                    break;
+                case "Button2":
+                    devices.Add(new Camera(devices.Count));
+                    break;
+                case "Button3":
+                    devices.Add(new SamsungLoudspeakers(devices.Count));
+                    break;
+            }
             Session["devices"] = devices;
         }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            List<Device> devices = (List<Device>)Session["devices"];
-            devices.Add(new SamsungLoudspeakers(devices.Count));
-            Session["devices"] = devices;
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            List<Device> devices = (List<Device>)Session["devices"];
-            devices.Add(new Camera(devices.Count));
-            Session["devices"] = devices;
-        }
-
-        
     }
 }

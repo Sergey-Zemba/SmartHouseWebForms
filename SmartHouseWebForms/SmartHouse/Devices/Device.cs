@@ -10,7 +10,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 
         public Device(int id)
         {
-            Id = _id;
+            Id = id;
         }
 
         public int Id { get; set; }
