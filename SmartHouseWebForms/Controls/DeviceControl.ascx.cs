@@ -10,7 +10,7 @@ using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.Controls
 {
-    public abstract partial class DeviceControl : System.Web.UI.UserControl
+    public partial class DeviceControl : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
