@@ -25,8 +25,6 @@ namespace SmartHouseWebForms
             else
             {
                 List<Device> devices = (List<Device>)Session["devices"];
-                Repeater1.DataSource = devices;
-                Repeater1.DataBind();
                 Session["devices"] = devices;
             }
         }
@@ -35,8 +33,6 @@ namespace SmartHouseWebForms
         {
             List<Device> devices = (List<Device>) Session["devices"];
             devices.Add(new PanasonicLoudspeakers(devices.Count));
-            Repeater1.DataSource = devices;
-            Repeater1.DataBind();
             Session["devices"] = devices;
         }
 
@@ -44,8 +40,6 @@ namespace SmartHouseWebForms
         {
             List<Device> devices = (List<Device>)Session["devices"];
             devices.Add(new SamsungLoudspeakers(devices.Count));
-            Repeater1.DataSource = devices;
-            Repeater1.DataBind();
             Session["devices"] = devices;
         }
 
@@ -53,8 +47,6 @@ namespace SmartHouseWebForms
         {
             List<Device> devices = (List<Device>)Session["devices"];
             devices.Add(new Camera(devices.Count));
-            Repeater1.DataSource = devices;
-            Repeater1.DataBind();
             Session["devices"] = devices;
         }
 

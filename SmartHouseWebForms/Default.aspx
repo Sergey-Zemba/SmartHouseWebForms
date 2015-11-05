@@ -3,6 +3,7 @@
 <%@ Import Namespace="SmartHouseWebForms.SmartHouse.Interfaces" %>
 <%@ Register Src="~/Controls/DeviceControl.ascx" TagPrefix="device" TagName ="MyDevice" %>
 <%@ Register Src="~/Controls/BassControl.ascx" TagPrefix="bass" TagName ="MyBass" %>
+<%@ Register Src="~/Controls/RecordingControl.ascx" TagPrefix="rec" TagName ="MyRec" %>
 
 <!DOCTYPE html>
 
@@ -18,17 +19,21 @@
         <br />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add Camera" />
         <br />
-        <asp:Repeater runat="server" ID="Repeater1">
-            <ItemTemplate>
-                <%# Container.DataItem %>
-                <device:MyDevice runat="server" />
-                <bass:MyBass runat="server" />
-            </ItemTemplate>
-        </asp:Repeater>
-        
-
-               
-
+        <% List<Device> devices = (List<Device>)Session["devices"];
+           foreach (Device device in devices)
+           {%>
+               <div>
+               <device:MyDevice runat="server" />
+               <%if (device is IBass)
+               {%>
+                   <bass:MyBass runat="server" />
+               <%}
+                 else if(device is IRecording)
+                 {%>
+                     <rec:Myrec runat="server" />
+                 <%}%>
+                 </div> 
+           <%} %>
     </form>
 </body>
 </html>
