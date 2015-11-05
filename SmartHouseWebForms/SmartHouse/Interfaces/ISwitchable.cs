@@ -2,7 +2,7 @@
 
 namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface ISwitchable
+    public interface ISwitchable
     {
         SwitchState SwitchState { get; }
         void On();

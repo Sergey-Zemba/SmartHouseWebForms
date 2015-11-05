@@ -1,8 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SmartHouseWebForms.Default" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Devices" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Interfaces" %>
-<%@ Register Src="~/Controls/DeviceControl.ascx" TagPrefix="device" TagName ="MyDevice" %>
-<%@ Register Src="~/Controls/BassControl.ascx" TagPrefix="bass" TagName ="MyBass" %>
+
 
 <!DOCTYPE html>
 
@@ -12,30 +9,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Panasonic Loudspeakers" />
+        <asp:Button ID="Button1" runat="server" Text="Add Panasonic Loudspeakers" OnClick="Button1_Click" />
         <br />
-        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Add Samsung Loudspeakers" />
+        <asp:Button ID="Button2" runat="server" Text="Add Camera" OnClick="Button2_Click" />
         <br />
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Add Camera" />
+        <asp:Button ID="Button3" runat="server" Text="Add Samsung Loudspeakers" />
         <br />
-        <% List<Device> devices = (List<Device>)Session["devices"];
-           foreach (Device device in devices)
-           {%>
-               <div>
-                   <asp:Repeater ID="Repeater1" runat="server">
+        <asp:Repeater runat="server" OnItemCommand="OnItemCommand" OnItemDataBound="OnItemDataBound" ID="Repeater1">
             <ItemTemplate>
-                    
-                    <device:MyDevice runat="server" />
-                    
+                <asp:PlaceHolder runat="server"  ID="plcHolder" />
+                
+                <asp:Button runat="server" CommandName="Delete" Text="Delete"></asp:Button>
+                <asp:HiddenField ID="hid" runat="server" Value='<%#Eval("Id") %>' />
             </ItemTemplate>
-            
         </asp:Repeater>
-               </div>
-           <%} %>
-        
-
-               
-
-    </form>
+        <br />
+   </form>
 </body>
 </html>

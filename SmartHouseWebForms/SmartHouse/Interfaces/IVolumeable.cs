@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.Interfaces
 {
-    interface IVolumeable
+    public interface IVolumeable
     {
         void AddVolume();
         void DecreaseVolume();
