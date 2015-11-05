@@ -24,11 +24,10 @@ namespace SmartHouseWebForms
             }
             else
             {
-                List<Device> devices = (List<Device>)Session["devices"];
-                Session["devices"] = devices;
                 Button1.Click += ButtonAdd_Click;
                 Button2.Click += ButtonAdd_Click;
                 Button3.Click += ButtonAdd_Click;
+                
             }
         }
 
@@ -46,6 +45,27 @@ namespace SmartHouseWebForms
                 case "Button3":
                     devices.Add(new SamsungLoudspeakers(devices.Count));
                     break;
+            }
+            Panel parentPanel = new Panel();
+            form1.Controls.Add(parentPanel);
+            foreach (Device device in devices)
+            {
+                Panel childPanel = new Panel();
+                childPanel.ID = device.Id.ToString();
+                Label state = new Label();
+                state.Text = device.ToString();
+                Button remove = new Button();
+                remove.Text = "Remove";
+                Button on = new Button();
+                on.Text = "On/Off";
+                if (device is IRecording)
+                {
+                    
+                }
+                childPanel.Controls.Add(state);
+                childPanel.Controls.Add(remove);
+                childPanel.Controls.Add(on);
+                parentPanel.Controls.Add(childPanel);
             }
             Session["devices"] = devices;
         }

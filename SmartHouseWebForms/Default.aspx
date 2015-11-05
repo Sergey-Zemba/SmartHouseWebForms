@@ -1,9 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SmartHouseWebForms.Default" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Devices" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Interfaces" %>
-<%@ Register Src="~/Controls/DeviceControl.ascx" TagPrefix="device" TagName ="MyDevice" %>
-<%@ Register Src="~/Controls/BassControl.ascx" TagPrefix="bass" TagName ="MyBass" %>
-<%@ Register Src="~/Controls/RecordingControl.ascx" TagPrefix="rec" TagName ="MyRec" %>
+
 
 <!DOCTYPE html>
 
