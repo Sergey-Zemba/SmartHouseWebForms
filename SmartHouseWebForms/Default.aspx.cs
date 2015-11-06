@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SmartHouseWebForms.SmartHouse.Devices;
 using SmartHouseWebForms.SmartHouse.Interfaces;
+using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms
 {
@@ -27,16 +28,26 @@ namespace SmartHouseWebForms
         }
         protected void OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            List<Device> devices = GetDeviceList();
+            Device device = GetDevice(devices, e);
             if (e.CommandName == "Delete")
             {
-                var h = (HiddenField)e.Item.FindControl("hid");
-                var id = Int32.Parse(h.Value);
-                List<Device> devices = GetDeviceList();
-                var device = devices.Single(x => x.Id == id);
                 devices.Remove(device);
-                BindDevices(devices);
-                SaveDeviceList(devices);
+                Response.Write(e);
             }
+            else if (e.CommandName == "On/Off")
+            {
+                if (device.SwitchState == SwitchState.Off)
+                {
+                    device.On();
+                }
+                else
+                {
+                    device.Off();
+                }
+            }
+            BindDevices(devices);
+            SaveDeviceList(devices);
         }
 
         protected void OnItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -44,12 +55,13 @@ namespace SmartHouseWebForms
             if (e.Item.ItemType == ListItemType.Item ||
                 e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                var device = (Device)e.Item.DataItem;
-                PlaceHolder p = e.Item.FindControl("plcHolder") as PlaceHolder;
+                Device device = (Device)e.Item.DataItem;
+                PlaceHolder p = (PlaceHolder)e.Item.FindControl("plcHolder");
                 Label state = new Label();
                 state.Text = device.ToString();
                 LinkButton switchLinkButton = new LinkButton();
                 switchLinkButton.Text = "On/Off";
+                switchLinkButton.CommandName = "On/Off";
                 p.Controls.Add(state);
                 p.Controls.Add(switchLinkButton);
                 if (device is IBass)
@@ -90,14 +102,22 @@ namespace SmartHouseWebForms
                 }
                 if (device is IVolumeable)
                 {
-                    
+                    LinkButton louderLinkButton = new LinkButton();
+                    louderLinkButton.Text = "Louder";
+                    LinkButton hushLinkButton = new LinkButton();
+                    hushLinkButton.Text = "Hush";
+                    LinkButton muteLinkButton = new LinkButton();
+                    muteLinkButton.Text = "Mute";
+                    p.Controls.Add(louderLinkButton);
+                    p.Controls.Add(hushLinkButton);
+                    p.Controls.Add(muteLinkButton);
                 }
             }
         }
 
 
 
-        
+
         protected void AddAirConditioner_Click(object sender, EventArgs e)
         {
             List<Device> devices = GetDeviceList();
@@ -219,7 +239,7 @@ namespace SmartHouseWebForms
         {
             List<Device> devices = GetDeviceList();
             int id = GetId();
-            devices.Add(new SamsungStereoSystem(id,new SamsungLoudspeakers(id)));
+            devices.Add(new SamsungStereoSystem(id, new SamsungLoudspeakers(id)));
             BindDevices(devices);
             SaveDeviceList(devices);
             SaveId(id);
@@ -254,6 +274,14 @@ namespace SmartHouseWebForms
             SaveDeviceList(devices);
             SaveId(id);
             RadioButtonsDown(PanasonicTVRadio, SamsungTVRadio);
+        }
+
+        private Device GetDevice(List<Device> devices, RepeaterCommandEventArgs e)
+        {
+            HiddenField h = (HiddenField)e.Item.FindControl("hid");
+            int id = Int32.Parse(h.Value);
+            Device device = devices.Single(x => x.Id == id);
+            return device;
         }
         private List<Device> GetDeviceList()
         {

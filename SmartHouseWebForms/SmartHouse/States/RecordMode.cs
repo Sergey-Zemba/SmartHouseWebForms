@@ -2,7 +2,7 @@
 {
     enum RecordMode
     {
-        Record,
-        Live
+        Live,
+        Record
     }
 }

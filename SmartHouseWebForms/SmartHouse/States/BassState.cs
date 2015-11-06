@@ -7,7 +7,7 @@ namespace SmartHouseWebForms.SmartHouse.States
 {
     public enum BassState
     {
-        On,
-        Off
+        Off,
+        On
     }
 }
