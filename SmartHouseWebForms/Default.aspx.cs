@@ -8,7 +8,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SmartHouseWebForms.SmartHouse.Devices;
 using SmartHouseWebForms.SmartHouse.Interfaces;
-using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms
 {
@@ -28,26 +27,16 @@ namespace SmartHouseWebForms
         }
         protected void OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            List<Device> devices = GetDeviceList();
-            Device device = GetDevice(devices, e);
-            if (e.CommandName == "Delete")
+            if (e.CommandName == "On/Off")
             {
+                HiddenField h = (HiddenField)e.Item.FindControl("hid");
+                int id = Int32.Parse(h.Value);
+                List<Device> devices = GetDeviceList();
+                Device device = devices.Single(x => x.Id == id);
                 devices.Remove(device);
-                Response.Write(e);
+                BindDevices(devices);
+                SaveDeviceList(devices);
             }
-            else if (e.CommandName == "On/Off")
-            {
-                if (device.SwitchState == SwitchState.Off)
-                {
-                    device.On();
-                }
-                else
-                {
-                    device.Off();
-                }
-            }
-            BindDevices(devices);
-            SaveDeviceList(devices);
         }
 
         protected void OnItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -56,7 +45,7 @@ namespace SmartHouseWebForms
                 e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 Device device = (Device)e.Item.DataItem;
-                PlaceHolder p = (PlaceHolder)e.Item.FindControl("plcHolder");
+                PlaceHolder p = e.Item.FindControl("plcHolder") as PlaceHolder;
                 Label state = new Label();
                 state.Text = device.ToString();
                 LinkButton switchLinkButton = new LinkButton();
@@ -117,7 +106,7 @@ namespace SmartHouseWebForms
 
 
 
-
+        
         protected void AddAirConditioner_Click(object sender, EventArgs e)
         {
             List<Device> devices = GetDeviceList();
@@ -239,7 +228,7 @@ namespace SmartHouseWebForms
         {
             List<Device> devices = GetDeviceList();
             int id = GetId();
-            devices.Add(new SamsungStereoSystem(id, new SamsungLoudspeakers(id)));
+            devices.Add(new SamsungStereoSystem(id,new SamsungLoudspeakers(id)));
             BindDevices(devices);
             SaveDeviceList(devices);
             SaveId(id);
@@ -274,14 +263,6 @@ namespace SmartHouseWebForms
             SaveDeviceList(devices);
             SaveId(id);
             RadioButtonsDown(PanasonicTVRadio, SamsungTVRadio);
-        }
-
-        private Device GetDevice(List<Device> devices, RepeaterCommandEventArgs e)
-        {
-            HiddenField h = (HiddenField)e.Item.FindControl("hid");
-            int id = Int32.Parse(h.Value);
-            Device device = devices.Single(x => x.Id == id);
-            return device;
         }
         private List<Device> GetDeviceList()
         {
