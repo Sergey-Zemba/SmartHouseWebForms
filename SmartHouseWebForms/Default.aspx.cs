@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,24 +20,22 @@ namespace SmartHouseWebForms
             if (!IsPostBack)
             {
                 List<Device> devices = new List<Device>();
-                Session["devices"] = devices;
+                SaveDeviceList(devices);
+                int id = 0;
+                SaveId(id);
             }
         }
-
-
-
         protected void OnItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
             {
                 var h = (HiddenField)e.Item.FindControl("hid");
                 var id = Int32.Parse(h.Value);
-                List<Device> devices = ((List<Device>)Session["devices"]);
+                List<Device> devices = GetDeviceList();
                 var device = devices.Single(x => x.Id == id);
                 devices.Remove(device);
-                Repeater1.DataSource = devices;
-                Repeater1.DataBind();
-                Session["devices"] = devices;
+                BindDevices(devices);
+                SaveDeviceList(devices);
             }
         }
 
@@ -47,38 +46,253 @@ namespace SmartHouseWebForms
             {
                 var device = (Device)e.Item.DataItem;
                 PlaceHolder p = e.Item.FindControl("plcHolder") as PlaceHolder;
+                Label state = new Label();
+                state.Text = device.ToString();
+                LinkButton switchLinkButton = new LinkButton();
+                switchLinkButton.Text = "On/Off";
+                p.Controls.Add(state);
+                p.Controls.Add(switchLinkButton);
+                if (device is IBass)
+                {
+                    LinkButton bassLinkButton = new LinkButton();
+                    bassLinkButton.Text = "Bass";
+                    p.Controls.Add(bassLinkButton);
+                }
+                if (device is IOpenable)
+                {
+                    LinkButton openLinkButton = new LinkButton();
+                    openLinkButton.Text = "Open";
+                    LinkButton closeLinkButton = new LinkButton();
+                    closeLinkButton.Text = "Close";
+                    p.Controls.Add(openLinkButton);
+                    p.Controls.Add(closeLinkButton);
+                }
                 if (device is IRecording)
                 {
-                    Label l = new Label();
-                    l.Text = device.ToString();
-                    p.Controls.Add(l);
+                    LinkButton recLinkButton = new LinkButton();
+                    recLinkButton.Text = "REC";
+                    p.Controls.Add(recLinkButton);
                 }
-                else if (device is IBass)
+                if (device is ITemperature)
                 {
-                    Button b = new Button();
-                    b.Text = "Bass";
-                    p.Controls.Add(b);
+                    LinkButton warmerLinkButton = new LinkButton();
+                    warmerLinkButton.Text = "Temperature Up";
+                    LinkButton coolerLinkButton = new LinkButton();
+                    coolerLinkButton.Text = "Temperature Down";
+                    p.Controls.Add(warmerLinkButton);
+                    p.Controls.Add(coolerLinkButton);
+                }
+                if (device is IThreeDimensional)
+                {
+                    LinkButton threeDLinkButton = new LinkButton();
+                    threeDLinkButton.Text = "3D";
+                    p.Controls.Add(threeDLinkButton);
+                }
+                if (device is IVolumeable)
+                {
+                    
                 }
             }
-
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+
+
+        
+        protected void AddAirConditioner_Click(object sender, EventArgs e)
         {
-            List<Device> devices = ((List<Device>)Session["devices"]);
-            devices.Add(new PanasonicLoudspeakers(devices.Count));
-            Repeater1.DataSource = devices;
-            Repeater1.DataBind();
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new AirConditioner(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+        }
+
+        protected void AddCamera_Click(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new Camera(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+        }
+
+        protected void AddFridge_Click(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new Fridge(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+        }
+
+        protected void AddGarage_Click(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new Garage(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+        }
+
+        protected void AddHomeCinema_Click(object sender, EventArgs e)
+        {
+            RadioButtonsUp(PanasonicCinemaRadio, SamsungCinemaRadio);
+            List<Device> devices = GetDeviceList();
+            BindDevices(devices);
+            SaveDeviceList(devices);
+        }
+
+        protected void PanasonicCinemaRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new PanasonicHomeCinema(id, new PanasonicTv(id), new PanasonicStereoSystem(id, new PanasonicLoudspeakers(id))));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicCinemaRadio, SamsungCinemaRadio);
+        }
+
+        protected void SamsungCinemaRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new SamsungHomeCinema(id, new SamsungTv(id), new SamsungStereoSystem(id, new SamsungLoudspeakers(id))));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicCinemaRadio, SamsungCinemaRadio);
+        }
+
+        protected void AddLoudspeakers_Click(object sender, EventArgs e)
+        {
+            RadioButtonsUp(PanasonicLoudspeakersRadio, SamsungLoudspeakersRadio);
+            List<Device> devices = GetDeviceList();
+            BindDevices(devices);
+            SaveDeviceList(devices);
+        }
+
+        protected void PanasonicLoudspeakersRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new PanasonicLoudspeakers(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicLoudspeakersRadio, SamsungLoudspeakersRadio);
+        }
+
+        protected void SamsungLoudspeakersRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new SamsungLoudspeakers(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicLoudspeakersRadio, SamsungLoudspeakersRadio);
+        }
+        protected void AddStereoSystem_Click(object sender, EventArgs e)
+        {
+            RadioButtonsUp(PanasonicStereoRadio, SamsungStereoRadio);
+            List<Device> devices = GetDeviceList();
+            BindDevices(devices);
+            SaveDeviceList(devices);
+        }
+        protected void PanasonicStereoRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new PanasonicStereoSystem(id, new PanasonicLoudspeakers(id)));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicStereoRadio, SamsungStereoRadio);
+        }
+
+        protected void SamsungStereoRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new SamsungStereoSystem(id,new SamsungLoudspeakers(id)));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicStereoRadio, SamsungStereoRadio);
+        }
+
+        protected void AddTV_Click(object sender, EventArgs e)
+        {
+            RadioButtonsUp(PanasonicTVRadio, SamsungTVRadio);
+            List<Device> devices = GetDeviceList();
+            BindDevices(devices);
+            SaveDeviceList(devices);
+        }
+
+        protected void PanasonicTVRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new PanasonicTv(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicTVRadio, SamsungTVRadio);
+        }
+
+        protected void SamsungTVRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Device> devices = GetDeviceList();
+            int id = GetId();
+            devices.Add(new SamsungTv(id));
+            BindDevices(devices);
+            SaveDeviceList(devices);
+            SaveId(id);
+            RadioButtonsDown(PanasonicTVRadio, SamsungTVRadio);
+        }
+        private List<Device> GetDeviceList()
+        {
+            return (List<Device>)Session["devices"];
+        }
+
+        private void SaveDeviceList(List<Device> devices)
+        {
             Session["devices"] = devices;
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        private int GetId()
         {
-            List<Device> devices = ((List<Device>)Session["devices"]);
-            devices.Add(new Camera(devices.Count));
+            return (int)Session["id"];
+        }
+
+        private void SaveId(int id)
+        {
+            id++;
+            Session["id"] = id;
+        }
+
+        private void BindDevices(List<Device> devices)
+        {
             Repeater1.DataSource = devices;
             Repeater1.DataBind();
-            Session["devices"] = devices;
+        }
+
+        private void RadioButtonsDown(RadioButton rb1, RadioButton rb2)
+        {
+            rb1.Checked = false;
+            rb2.Checked = false;
+            rb1.Visible = false;
+            rb2.Visible = false;
+        }
+        private void RadioButtonsUp(RadioButton rb1, RadioButton rb2)
+        {
+            rb1.Visible = true;
+            rb2.Visible = true;
         }
     }
 }
