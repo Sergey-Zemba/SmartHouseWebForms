@@ -72,14 +72,14 @@ namespace SmartHouseWebForms
                 Device device = (Device)e.Item.DataItem;
                 ((Label)e.Item.FindControl("State")).Text = device.ToString();
                 //PlaceHolder p = (PlaceHolder)e.Item.FindControl("plcHolder");
-                if (device is IBass)
-                {
-                    LinkButton bassLinkButton = new LinkButton();
-                    bassLinkButton.Text = "Bass";
-                    bassLinkButton.CommandName = "Bass";
-                    e.Item.Controls.Add(bassLinkButton);
-                    //p.Controls.Add(bassLinkButton);
-                }
+                //if (device is IBass)
+                //{
+                //    LinkButton bassLinkButton = new LinkButton();
+                //    bassLinkButton.Text = "Bass";
+                //    bassLinkButton.CommandName = "Bass";
+                //    e.Item.Controls.Add(bassLinkButton);
+                //    //p.Controls.Add(bassLinkButton);
+                //}
                 if (device is IOpenable)
                 {
                     LinkButton openLinkButton = new LinkButton();

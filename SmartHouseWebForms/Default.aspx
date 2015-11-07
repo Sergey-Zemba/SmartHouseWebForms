@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SmartHouseWebForms.Default" %>
+<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Devices" %>
+<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Interfaces" %>
 
 
 <!DOCTYPE html>
@@ -50,6 +52,14 @@
                     <asp:Label runat="server" ID="State"></asp:Label>
                     <br />
                     <asp:LinkButton runat="server" CommandName="On/Off" Text="On/Off"></asp:LinkButton>
+                    <% List<Device> devices = (List<Device>)Session["devices"];
+                       HiddenField h = (HiddenField)FindControl("hid");
+                       int id = 1;
+                       Device device = devices.Single(x => x.Id == id);
+                       if (device is IBass) { %>
+                            <asp:LinkButton runat="server" CommandName="Bass" Text="Bass"></asp:LinkButton>
+                    <%}
+                    %>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
