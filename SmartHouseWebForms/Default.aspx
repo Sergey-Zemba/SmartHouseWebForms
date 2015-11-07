@@ -44,8 +44,13 @@
         <asp:Repeater runat="server" OnItemCommand="OnItemCommand" OnItemDataBound="OnItemDataBound" ID="Repeater1">
             <ItemTemplate>
                 <asp:HiddenField ID="hid" runat="server" Value='<%#Eval("Id") %>' />
-                <asp:PlaceHolder runat="server" ID="plcHolder" />
-                <asp:Button runat="server" CommandName="Delete" Text="Delete" ></asp:Button>
+                <div>
+                    <asp:Button runat="server" CommandName="Delete" Text="Delete"></asp:Button>
+                    <br />
+                    <asp:Label runat="server" ID="State"></asp:Label>
+                    <br />
+                    <asp:LinkButton runat="server" CommandName="On/Off" Text="On/Off"></asp:LinkButton>
+                </div>
             </ItemTemplate>
         </asp:Repeater>
         <br />
