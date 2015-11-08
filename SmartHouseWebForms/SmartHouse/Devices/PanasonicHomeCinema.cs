@@ -5,8 +5,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 {
     class PanasonicHomeCinema : HomeCinema, IBass, IThreeDimensional
     {
-        private BassState _bassState;
-        private TvMode _mode;
 
         public PanasonicHomeCinema(int id, PanasonicTv t, PanasonicStereoSystem s)
             : base(id, t, s)
@@ -18,10 +16,19 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             get
             {
-                return _bassState;
+                PanasonicStereoSystem panasonicStereoSystem = StereoSystem as PanasonicStereoSystem;
+                return panasonicStereoSystem.BassState;
             }
         }
-        public TvMode Mode { get { return _mode; } }
+
+        public TvMode Mode
+        {
+            get
+            {
+                PanasonicTv panasonicTv = Tv as PanasonicTv;
+                return panasonicTv.Mode;
+            }
+        }
 
         public void BassOn()
         {
