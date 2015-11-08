@@ -11,6 +11,9 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             : base(id)
         {
         }
+
+        public TvMode Mode { get { return _mode; } }
+
         public void ThreeDOn()
         {
             _mode = TvMode.ThreeDMode;
@@ -31,6 +34,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             return str;
         }
 
-        
+
     }
 }

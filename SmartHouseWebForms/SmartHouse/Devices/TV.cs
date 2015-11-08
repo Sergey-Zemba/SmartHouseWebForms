@@ -12,6 +12,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
         }
 
+        public RecordMode RecordMode { get { return _recordMode; } }
+
         public virtual void AddVolume()
         {
             if (_volume < 100)
@@ -61,6 +63,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             return str;
         }
 
-        
+
     }
 }

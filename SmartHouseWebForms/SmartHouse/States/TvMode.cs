@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.States
 {
-    enum TvMode
+    public enum TvMode
     {
         StandartMode,
         ThreeDMode

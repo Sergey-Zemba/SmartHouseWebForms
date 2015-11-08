@@ -1,6 +1,6 @@
 ﻿namespace SmartHouseWebForms.SmartHouse.States
 {
-    enum RecordMode
+    public enum RecordMode
     {
         Live,
         Record

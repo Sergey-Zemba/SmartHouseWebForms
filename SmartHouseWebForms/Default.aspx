@@ -1,7 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SmartHouseWebForms.Default" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Devices" %>
-<%@ Import Namespace="SmartHouseWebForms.SmartHouse.Interfaces" %>
-
 
 <!DOCTYPE html>
 
@@ -51,15 +48,29 @@
                     <br />
                     <asp:Label runat="server" ID="State"></asp:Label>
                     <br />
-                    <asp:LinkButton runat="server" CommandName="On/Off" Text="On/Off"></asp:LinkButton>
-                    <% List<Device> devices = (List<Device>)Session["devices"];
-                       HiddenField h = (HiddenField)FindControl("hid");
-                       int id = 1;
-                       Device device = devices.Single(x => x.Id == id);
-                       if (device is IBass) { %>
-                            <asp:LinkButton runat="server" CommandName="Bass" Text="Bass"></asp:LinkButton>
-                    <%}
-                    %>
+                    <asp:LinkButton runat="server" CommandName="On/Off" Text="On/Off"></asp:LinkButton>&nbsp;
+                    <asp:Panel runat="server" ID="BassPanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="Bass" Text="Bass"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="LockPanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="Open" Text="Open"></asp:LinkButton>&nbsp;
+                        <asp:LinkButton runat="server" CommandName="Close" Text="Close"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="RecordingPanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="REC" Text="REC"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="TemperaturePanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="Warmer" Text="Temperature Up"></asp:LinkButton>&nbsp;
+                        <asp:LinkButton runat="server" CommandName="Cooler" Text="Temperature Down"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="ThreeDPanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="ThreeD" Text="3D"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="VolumePanel" Visible="False">
+                        <asp:LinkButton runat="server" CommandName="Louder" Text="Sound Up"></asp:LinkButton>&nbsp;
+                        <asp:LinkButton runat="server" CommandName="Hush" Text="Sound Down"></asp:LinkButton>&nbsp;
+                        <asp:LinkButton runat="server" CommandName="Mute" Text="Mute"></asp:LinkButton>&nbsp;
+                    </asp:Panel>
                 </div>
             </ItemTemplate>
         </asp:Repeater>

@@ -10,6 +10,15 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             : base(id)
         {
         }
+
+        public RecordMode RecordMode
+        {
+            get
+            {
+                return _recordMode;
+            }
+        }
+
         public void StartRecording()
         {
             _recordMode = RecordMode.Record;

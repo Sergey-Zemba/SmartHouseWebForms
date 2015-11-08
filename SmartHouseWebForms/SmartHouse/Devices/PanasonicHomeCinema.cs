@@ -3,13 +3,25 @@ using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
-    class PanasonicHomeCinema : HomeCinema
+    class PanasonicHomeCinema : HomeCinema, IBass, IThreeDimensional
     {
+        private BassState _bassState;
+        private TvMode _mode;
+
         public PanasonicHomeCinema(int id, PanasonicTv t, PanasonicStereoSystem s)
             : base(id, t, s)
         {
 
         }
+
+        public BassState BassState
+        {
+            get
+            {
+                return _bassState;
+            }
+        }
+        public TvMode Mode { get { return _mode; } }
 
         public void BassOn()
         {
@@ -28,6 +40,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
                 panasonicStereoSystem.BassOff();
             }
         }
+
 
         public void ThreeDOn()
         {

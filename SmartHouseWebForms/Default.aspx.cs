@@ -62,6 +62,81 @@ namespace SmartHouseWebForms
                 BindDevices(devices);
                 SaveDeviceList(devices);
             }
+            else if (e.CommandName == "Open")
+            {
+                if ((device as IOpenable).OpenState == OpenState.Close)
+                {
+                    (device as IOpenable).Open();
+                }
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Close")
+            {
+                if ((device as IOpenable).OpenState == OpenState.Open)
+                {
+                    (device as IOpenable).Close();
+                }
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "REC")
+            {
+                if ((device as IRecording).RecordMode == RecordMode.Live)
+                {
+                    (device as IRecording).StartRecording();
+                }
+                else
+                {
+                    (device as IRecording).StopRecording();
+                }
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Warmer")
+            {
+                (device as ITemperature).AddTemperture();
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Cooler")
+            {
+                (device as ITemperature).DecreaseTemperature();
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "ThreeD")
+            {
+                if ((device as IThreeDimensional).Mode == TvMode.StandartMode)
+                {
+                    (device as IThreeDimensional).ThreeDOn();
+                }
+                else
+                {
+                    (device as IThreeDimensional).ThreeDOff();
+                }
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Louder")
+            {
+                (device as IVolumeable).AddVolume();
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Hush")
+            {
+                (device as IVolumeable).DecreaseVolume();
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            else if (e.CommandName == "Mute")
+            {
+                (device as IVolumeable).Mute();
+                BindDevices(devices);
+                SaveDeviceList(devices);
+            }
+            
         }
 
         protected void OnItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -71,56 +146,29 @@ namespace SmartHouseWebForms
             {
                 Device device = (Device)e.Item.DataItem;
                 ((Label)e.Item.FindControl("State")).Text = device.ToString();
-                //PlaceHolder p = (PlaceHolder)e.Item.FindControl("plcHolder");
-                //if (device is IBass)
-                //{
-                //    LinkButton bassLinkButton = new LinkButton();
-                //    bassLinkButton.Text = "Bass";
-                //    bassLinkButton.CommandName = "Bass";
-                //    e.Item.Controls.Add(bassLinkButton);
-                //    //p.Controls.Add(bassLinkButton);
-                //}
+                if (device is IBass)
+                {
+                    ((Panel)e.Item.FindControl("BassPanel")).Visible = true;
+                }
                 if (device is IOpenable)
                 {
-                    LinkButton openLinkButton = new LinkButton();
-                    openLinkButton.Text = "Open";
-                    LinkButton closeLinkButton = new LinkButton();
-                    closeLinkButton.Text = "Close";
-                    //p.Controls.Add(openLinkButton);
-                    //p.Controls.Add(closeLinkButton);
+                    ((Panel)e.Item.FindControl("LockPanel")).Visible = true;
                 }
                 if (device is IRecording)
                 {
-                    LinkButton recLinkButton = new LinkButton();
-                    recLinkButton.Text = "REC";
-                    //p.Controls.Add(recLinkButton);
+                    ((Panel)e.Item.FindControl("RecordingPanel")).Visible = true;
                 }
                 if (device is ITemperature)
                 {
-                    LinkButton warmerLinkButton = new LinkButton();
-                    warmerLinkButton.Text = "Temperature Up";
-                    LinkButton coolerLinkButton = new LinkButton();
-                    coolerLinkButton.Text = "Temperature Down";
-                    //p.Controls.Add(warmerLinkButton);
-                    //p.Controls.Add(coolerLinkButton);
+                    ((Panel)e.Item.FindControl("TemperaturePanel")).Visible = true;
                 }
                 if (device is IThreeDimensional)
                 {
-                    LinkButton threeDLinkButton = new LinkButton();
-                    threeDLinkButton.Text = "3D";
-                    //p.Controls.Add(threeDLinkButton);
+                    ((Panel)e.Item.FindControl("ThreeDPanel")).Visible = true;
                 }
                 if (device is IVolumeable)
                 {
-                    LinkButton louderLinkButton = new LinkButton();
-                    louderLinkButton.Text = "Louder";
-                    LinkButton hushLinkButton = new LinkButton();
-                    hushLinkButton.Text = "Hush";
-                    LinkButton muteLinkButton = new LinkButton();
-                    muteLinkButton.Text = "Mute";
-                    //p.Controls.Add(louderLinkButton);
-                    //p.Controls.Add(hushLinkButton);
-                    //p.Controls.Add(muteLinkButton);
+                    ((Panel)e.Item.FindControl("VolumePanel")).Visible = true;
                 }
             }
         }
