@@ -1,7 +1,10 @@
-﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+﻿using System;
+using SmartHouseWebForms.SmartHouse.Interfaces;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
+    [Serializable]
+
     abstract class StereoSystem : Device, IVolumeable
     {
         public StereoSystem(int id, Loudspeakers loudspeakers) : base(id)

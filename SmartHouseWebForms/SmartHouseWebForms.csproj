@@ -77,6 +77,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DeviceListModel.cs" />
+    <Compile Include="IReadingWriting.cs" />
     <Compile Include="SmartHouse\Devices\AirConditioner.cs" />
     <Compile Include="SmartHouse\Devices\Camera.cs" />
     <Compile Include="SmartHouse\Devices\Device.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="SmartHouse\States\RecordMode.cs" />
     <Compile Include="SmartHouse\States\SwitchState.cs" />
     <Compile Include="SmartHouse\States\TvMode.cs" />
+    <Compile Include="BinaryReadingWriting.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

@@ -1,7 +1,9 @@
-﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+﻿using System;
+using SmartHouseWebForms.SmartHouse.Interfaces;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
+    [Serializable]
     public class AirConditioner : Device, ITemperature
     {
         private int _temperature;

@@ -1,8 +1,11 @@
-﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+﻿using System;
+using SmartHouseWebForms.SmartHouse.Interfaces;
 using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
+    [Serializable]
+
     class PanasonicLoudspeakers : Loudspeakers, IBass
     {
         private BassState _bassState;

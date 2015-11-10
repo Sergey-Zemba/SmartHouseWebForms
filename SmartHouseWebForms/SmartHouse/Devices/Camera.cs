@@ -1,8 +1,10 @@
-﻿using SmartHouseWebForms.SmartHouse.Interfaces;
+﻿using System;
+using SmartHouseWebForms.SmartHouse.Interfaces;
 using SmartHouseWebForms.SmartHouse.States;
 
 namespace SmartHouseWebForms.SmartHouse.Devices
 {
+    [Serializable]
     public class Camera : Device, IRecording
     {
         private RecordMode _recordMode;
