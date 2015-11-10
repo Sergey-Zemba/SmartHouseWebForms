@@ -8,8 +8,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     class PanasonicHomeCinema : HomeCinema, IBass, IThreeDimensional
     {
 
-        public PanasonicHomeCinema(int id, PanasonicTv t, PanasonicStereoSystem s)
-            : base(id, t, s)
+        public PanasonicHomeCinema(int id, PanasonicTv t, PanasonicLoudspeakers l)
+            : base(id, t, l)
         {
 
         }
@@ -18,8 +18,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             get
             {
-                PanasonicStereoSystem panasonicStereoSystem = StereoSystem as PanasonicStereoSystem;
-                return panasonicStereoSystem.BassState;
+                PanasonicLoudspeakers panasonicLoudspeakers= Loudspeakers as PanasonicLoudspeakers;
+                return panasonicLoudspeakers.BassState;
             }
         }
 
@@ -34,19 +34,19 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 
         public void BassOn()
         {
-            PanasonicStereoSystem panasonicStereoSystem = StereoSystem as PanasonicStereoSystem;
-            if (panasonicStereoSystem != null)
+            PanasonicLoudspeakers panasonicLoudspeakers = Loudspeakers as PanasonicLoudspeakers;
+            if (panasonicLoudspeakers != null)
             {
-                panasonicStereoSystem.BassOn();
+                panasonicLoudspeakers.BassOn();
             }
         }
 
         public void BassOff()
         {
-            PanasonicStereoSystem panasonicStereoSystem = StereoSystem as PanasonicStereoSystem;
-            if (panasonicStereoSystem != null)
+            PanasonicLoudspeakers panasonicLoudspeakers = Loudspeakers as PanasonicLoudspeakers;
+            if (panasonicLoudspeakers != null)
             {
-                panasonicStereoSystem.BassOff();
+                panasonicLoudspeakers.BassOff();
             }
         }
 

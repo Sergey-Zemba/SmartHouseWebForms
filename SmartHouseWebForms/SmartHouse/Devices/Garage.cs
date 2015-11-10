@@ -31,9 +31,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         public void Close()
         {
             _openState = OpenState.Close;
-        }
-
-
-        
+        } 
     }
 }

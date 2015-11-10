@@ -12,6 +12,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _temperature = 18;
         }
+
+        public int CurrentTemperature { get { return _temperature; } }
         public void AddTemperture()
         {
             if (_temperature < 25)
@@ -35,13 +37,6 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             {
                 _temperature = 16;
             }
-        }
-
-        public override string ToString()
-        {
-            string str = base.ToString();
-            str += " Current temperature: " + _temperature;
-            return str;
         }
     }
 }

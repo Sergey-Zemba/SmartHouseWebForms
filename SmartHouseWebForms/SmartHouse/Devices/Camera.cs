@@ -30,17 +30,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _recordMode = RecordMode.Live;
         }
-
-        public override string ToString()
-        {
-            string str = base.ToString();
-            if (_recordMode == RecordMode.Record)
-            {
-                str += " rec";
-            }
-            return str;
-        }
-
-        
     }
 }

@@ -31,11 +31,6 @@
         <asp:RadioButton AutoPostBack="True" GroupName="LoudspeakersGroup" ID="PanasonicLoudspeakersRadio" OnCheckedChanged="PanasonicLoudspeakersRadio_CheckedChanged" runat="server" Text="Panasonic" Visible="False" />
         <asp:RadioButton AutoPostBack="True" GroupName="LoudspeakersGroup" ID="SamsungLoudspeakersRadio" OnCheckedChanged="SamsungLoudspeakersRadio_CheckedChanged" runat="server" Text="Samsung" Visible="False" />
         <br />
-        <asp:LinkButton ID="AddStereoSystem" runat="server" OnClick="AddStereoSystem_Click" Text="Add Stereo System" CssClass="addLinkButtons" />
-        <br />
-        <asp:RadioButton AutoPostBack="True" GroupName="StereoSystemGroup" ID="PanasonicStereoRadio" OnCheckedChanged="PanasonicStereoRadio_CheckedChanged" runat="server" Text="Panasonic" Visible="False" />
-        <asp:RadioButton AutoPostBack="True" GroupName="StereoSystemGroup" ID="SamsungStereoRadio" OnCheckedChanged="SamsungStereoRadio_CheckedChanged" runat="server" Text="Samsung" Visible="False" />
-        <br />
         <asp:LinkButton ID="AddTV" runat="server" OnClick="AddTV_Click" Text="Add TV" CssClass="addLinkButtons" />
         <br />
         <asp:RadioButton AutoPostBack="True" GroupName="TVGroup" ID="PanasonicTVRadio" OnCheckedChanged="PanasonicTVRadio_CheckedChanged" runat="server" Text="Panasonic" Visible="False" />

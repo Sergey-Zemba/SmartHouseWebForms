@@ -30,16 +30,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _bassState = BassState.Off;
         }
-        public override string ToString()
-        {
-            string str = base.ToString();
-            if (BassState == BassState.On)
-            {
-                str += " Bass is on";
-            }
-            return str;
-        }
-
-        
     }
 }

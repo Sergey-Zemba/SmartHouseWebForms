@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.AccessControl;
 using System.Web;
-using System.Xml.Serialization;
 using SmartHouseWebForms.SmartHouse.Devices;
 
-namespace SmartHouseWebForms
+namespace SmartHouseWebForms.Model
 {
     public class XmlReadingWriting : IReadingWriting
     {
@@ -18,7 +14,7 @@ namespace SmartHouseWebForms
         public List<Device> Read()
         {
             List<Device> devices;
-            using (FileStream fs = new FileStream(@"C:\Users\Sergey\Source\Repos\SmartHouseWebForms\SmartHouseWebForms\Devices.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("~/Devices.dat"), FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
                 {
@@ -34,7 +30,7 @@ namespace SmartHouseWebForms
 
         public void Write(List<Device> devices)
         {
-            using (FileStream fs = new FileStream(@"C:\Users\Sergey\Source\Repos\SmartHouseWebForms\SmartHouseWebForms\Devices.dat", FileMode.Open))
+            using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("~/Devices.dat"), FileMode.Open))
             {
                 formatter.Serialize(fs, devices);
             }

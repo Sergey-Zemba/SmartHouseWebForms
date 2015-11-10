@@ -26,17 +26,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _mode = TvMode.StandartMode;
         }
-
-        public override string ToString()
-        {
-            string str = base.ToString();
-            if (_mode == TvMode.ThreeDMode)
-            {
-                str += " 3D";
-            }
-            return str;
-        }
-
-
     }
 }

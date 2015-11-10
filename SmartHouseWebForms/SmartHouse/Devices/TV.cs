@@ -16,6 +16,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         }
 
         public RecordMode RecordMode { get { return _recordMode; } }
+        public int CurrentVolume { get { return _volume; } }
 
         public virtual void AddVolume()
         {
@@ -55,17 +56,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _recordMode = RecordMode.Live;
         }
-        public override string ToString()
-        {
-            string str = base.ToString();
-            str += " volume = " + _volume;
-            if (_recordMode == RecordMode.Record)
-            {
-                str += " rec";
-            }
-            return str;
-        }
-
-
     }
 }

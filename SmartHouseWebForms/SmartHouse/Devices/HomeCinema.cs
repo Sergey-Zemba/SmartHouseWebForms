@@ -9,30 +9,31 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     abstract class HomeCinema : Device, IVolumeable, IRecording
     {
 
-        public HomeCinema(int id, Tv tv, StereoSystem stereoSystem) : base(id)
+        public HomeCinema(int id, Tv tv, Loudspeakers loudspeakers) : base(id)
         {
             Tv = tv;
-            StereoSystem = stereoSystem;
+            Loudspeakers = loudspeakers;
         }
         public Tv Tv { get; set; }
-        public StereoSystem StereoSystem { get; set; }
+        public Loudspeakers Loudspeakers { get; set; }
         public RecordMode RecordMode { get { return Tv.RecordMode; } }
+        public int CurrentVolume { get { return Loudspeakers.CurrentVolume; } }
         public virtual void AddVolume()
         {
             Tv.AddVolume();
-            StereoSystem.AddVolume();
+            Loudspeakers.AddVolume();
         }
 
         public void DecreaseVolume()
         {
             Tv.DecreaseVolume();
-            StereoSystem.DecreaseVolume();
+            Loudspeakers.DecreaseVolume();
         }
 
         public void Mute()
         {
             Tv.Mute();
-            StereoSystem.Mute();
+            Loudspeakers.Mute();
         }
 
         public virtual void StartRecording()
@@ -49,21 +50,14 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             base.On();
             Tv.On();
-            StereoSystem.On();
+            Loudspeakers.On();
         }
 
         public override void Off()
         {
             base.Off();
             Tv.Off();
-            StereoSystem.Off();
-        }
-
-        public override string ToString()
-        {
-            string str = base.ToString();
-            str += "\t" + Tv + "\t" + StereoSystem;
-            return str;
+            Loudspeakers.Off();
         }
     }
 }

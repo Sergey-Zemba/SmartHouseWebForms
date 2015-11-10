@@ -22,6 +22,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             }
 
         }
+        public int CurrentTemperature { get { return _temperature; } }
 
         public void Open()
         {
@@ -58,13 +59,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
                 _temperature = -5;
             }
         }
-        public override string ToString()
-        {
-            string str = base.ToString();
-            str += " Current temperature: " + _temperature;
-            return str;
-        }
-
-        
     }
 }

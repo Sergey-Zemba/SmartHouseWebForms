@@ -77,8 +77,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DeviceListModel.cs" />
-    <Compile Include="IReadingWriting.cs" />
+    <Compile Include="Model\DeviceListModel.cs" />
+    <Compile Include="Model\IReadingWriting.cs" />
     <Compile Include="SmartHouse\Devices\AirConditioner.cs" />
     <Compile Include="SmartHouse\Devices\Camera.cs" />
     <Compile Include="SmartHouse\Devices\Device.cs" />
@@ -88,13 +88,10 @@
     <Compile Include="SmartHouse\Devices\LoudSpeakers.cs" />
     <Compile Include="SmartHouse\Devices\PanasonicHomeCinema.cs" />
     <Compile Include="SmartHouse\Devices\PanasonicLoudspeakers.cs" />
-    <Compile Include="SmartHouse\Devices\PanasonicStereoSystem.cs" />
     <Compile Include="SmartHouse\Devices\PanasonicTV.cs" />
     <Compile Include="SmartHouse\Devices\SamsungHomeCinema.cs" />
     <Compile Include="SmartHouse\Devices\SamsungLoudspeakers.cs" />
-    <Compile Include="SmartHouse\Devices\SamsungStereoSystem.cs" />
     <Compile Include="SmartHouse\Devices\SamsungTV.cs" />
-    <Compile Include="SmartHouse\Devices\StereoSystem.cs" />
     <Compile Include="SmartHouse\Devices\TV.cs" />
     <Compile Include="SmartHouse\Interfaces\IBass.cs" />
     <Compile Include="SmartHouse\Interfaces\IOpenable.cs" />
@@ -109,7 +106,7 @@
     <Compile Include="SmartHouse\States\RecordMode.cs" />
     <Compile Include="SmartHouse\States\SwitchState.cs" />
     <Compile Include="SmartHouse\States\TvMode.cs" />
-    <Compile Include="BinaryReadingWriting.cs" />
+    <Compile Include="Model\BinaryReadingWriting.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

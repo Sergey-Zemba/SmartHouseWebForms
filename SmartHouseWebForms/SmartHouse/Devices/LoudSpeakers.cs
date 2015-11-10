@@ -12,6 +12,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             : base(id)
         {
         }
+        public int CurrentVolume { get { return _volume; } }
 
         public virtual void AddVolume()
         {
@@ -41,14 +42,5 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         {
             _volume = 0;
         }
-
-        public override string ToString()
-        {
-            string str = base.ToString();
-            str += " volume = " + _volume;
-            return str;
-        }
-
-        
     }
 }

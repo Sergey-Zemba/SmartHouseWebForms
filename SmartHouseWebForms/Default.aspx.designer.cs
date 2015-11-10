@@ -112,33 +112,6 @@ namespace SmartHouseWebForms {
         protected global::System.Web.UI.WebControls.RadioButton SamsungLoudspeakersRadio;
         
         /// <summary>
-        /// AddStereoSystem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddStereoSystem;
-        
-        /// <summary>
-        /// PanasonicStereoRadio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton PanasonicStereoRadio;
-        
-        /// <summary>
-        /// SamsungStereoRadio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton SamsungStereoRadio;
-        
-        /// <summary>
         /// AddTV control.
         /// </summary>
         /// <remarks>

@@ -13,10 +13,10 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 
         public Device(int id)
         {
-            Id = id;
+            _id = id;
         }
 
-        public int Id { get; set; }
+        public int Id { get { return _id; }}
         public SwitchState SwitchState
         {
             get
@@ -39,12 +39,44 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         public override string ToString()
         {
             string str = GetType().Name + " is " + SwitchState;
-            if (this is IOpenable)
+            if (SwitchState == SwitchState.On)
             {
-                IOpenable openable = this as IOpenable;
-                if (openable != null)
+                if (this is IBass)
                 {
-                    str += " and " + openable.OpenState;
+                    if ((this as IBass).BassState == BassState.On)
+                    {
+                        str += " Bass";
+                    }
+                }
+                if (this is IOpenable)
+                {
+                    IOpenable openable = this as IOpenable;
+                    if (openable != null)
+                    {
+                        str += " and " + openable.OpenState;
+                    }
+                }
+                if (this is IRecording)
+                {
+                    if ((this as IRecording).RecordMode == RecordMode.Record)
+                    {
+                        str += " REC";
+                    }
+                }
+                if (this is ITemperature)
+                {
+                    str += " Current temperature " + (this as ITemperature).CurrentTemperature + "°C";
+                }
+                if (this is IThreeDimensional)
+                {
+                    if ((this as IThreeDimensional).Mode == TvMode.ThreeDMode)
+                    {
+                        str += " 3D";
+                    }
+                }
+                if (this is IVolumeable)
+                {
+                    str += " Volume " + (this as IVolumeable).CurrentVolume;
                 }
             }
             return str;
