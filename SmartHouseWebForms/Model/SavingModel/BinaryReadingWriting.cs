@@ -4,9 +4,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using SmartHouseWebForms.SmartHouse.Devices;
 
-namespace SmartHouseWebForms.Model
+namespace SmartHouseWebForms.Model.SavingModel
 {
-    public class XmlReadingWriting : IReadingWriting
+    public class BinaryReadingWriting : IReadingWriting
     {
         private BinaryFormatter formatter = new BinaryFormatter();
 
@@ -34,6 +34,31 @@ namespace SmartHouseWebForms.Model
             {
                 formatter.Serialize(fs, devices);
             }
+        }
+        public int MakeId()
+        {
+            int id;
+            using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("~/ID.dat"), FileMode.OpenOrCreate))
+            {
+                if (fs.Length != 0)
+                {
+                    id = (int)formatter.Deserialize(fs);
+                }
+                else
+                {
+                    id = 0;
+                }
+            }
+            using (
+                FileStream fs =
+                    new FileStream(HttpContext.Current.Server.MapPath("~/ID.dat"),
+                        FileMode.Open))
+            {
+
+                id++;
+                formatter.Serialize(fs, id);
+            }
+            return id;
         }
     }
 }

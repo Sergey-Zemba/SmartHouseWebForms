@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
+using SmartHouseWebForms.Model.SavingModel;
 using SmartHouseWebForms.SmartHouse.Devices;
 using SmartHouseWebForms.SmartHouse.Interfaces;
 using SmartHouseWebForms.SmartHouse.States;
@@ -12,7 +13,7 @@ namespace SmartHouseWebForms.Model
     public class DeviceListModel
     {
         private List<Device> _devices;
-        private IReadingWriting irw  = new XmlReadingWriting();
+        private IReadingWriting irw  = new SessionReadingWriting();
 
         public List<Device> GetDevices()
         {
@@ -23,7 +24,7 @@ namespace SmartHouseWebForms.Model
         public void Add(string device)
         {
             _devices = irw.Read();
-            int id = MakeId();
+            int id = irw.MakeId();
             switch (device)
             {
                 case "conditioner":
@@ -190,31 +191,6 @@ namespace SmartHouseWebForms.Model
             return device;
         }
 
-        private int MakeId()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            int id;
-            using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("~/ID.dat"), FileMode.OpenOrCreate))
-            {
-                if (fs.Length != 0)
-                {
-                    id = (int) formatter.Deserialize(fs);
-                }
-                else
-                {
-                    id = 0;
-                }
-            }
-            using (
-                FileStream fs =
-                    new FileStream(HttpContext.Current.Server.MapPath("~/ID.dat"),
-                        FileMode.Open))
-            {
-
-                id++;
-                formatter.Serialize(fs, id);
-            }
-            return id;
-        }
+        
     }
 }
