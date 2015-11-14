@@ -1,8 +1,6 @@
-﻿.addLinkButtons 
-{
-    background-color: yellow;
-    color: red;
-    background-image: url(conditioner.png);
-    height: 100px;
-    width: 100px;
+﻿.addButtons {
+    width: 17%;
+}
+.add {
+    
 }
