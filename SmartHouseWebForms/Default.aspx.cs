@@ -82,6 +82,7 @@ namespace SmartHouseWebForms
                 e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 Device device = (Device)e.Item.DataItem;
+                SetImage(device, e);
                 ((Label)e.Item.FindControl("State")).Text = device.ToString();
                 if (device is IBass && device.SwitchState == SwitchState.On)
                 {
@@ -136,9 +137,9 @@ namespace SmartHouseWebForms
 
         protected void AddHomeCinema_Click(object sender, EventArgs e)
         {
-
             RadioButtonsDown();
-            RadioButtonsUp(PanasonicCinemaRadio, SamsungCinemaRadio);
+            Panel p = (Panel)Page.FindControl("CinemaRadio");
+            p.Visible = true;
         }
 
         protected void PanasonicCinemaRadio_CheckedChanged(object sender, EventArgs e)
@@ -155,9 +156,9 @@ namespace SmartHouseWebForms
 
         protected void AddLoudspeakers_Click(object sender, EventArgs e)
         {
-
             RadioButtonsDown();
-            RadioButtonsUp(PanasonicLoudspeakersRadio, SamsungLoudspeakersRadio);
+            Panel p = (Panel)Page.FindControl("LoudspeakersRadio");
+            p.Visible = true;
         }
 
         protected void PanasonicLoudspeakersRadio_CheckedChanged(object sender, EventArgs e)
@@ -173,9 +174,9 @@ namespace SmartHouseWebForms
         }
         protected void AddTV_Click(object sender, EventArgs e)
         {
-
             RadioButtonsDown();
-            RadioButtonsUp(PanasonicTVRadio, SamsungTVRadio);
+            Panel p = (Panel)Page.FindControl("TVRadio");
+            p.Visible = true;
         }
 
         protected void PanasonicTVRadio_CheckedChanged(object sender, EventArgs e)
@@ -204,6 +205,17 @@ namespace SmartHouseWebForms
 
         private void RadioButtonsDown()
         {
+            List<Panel> panels = new List<Panel>
+            {
+                CinemaRadio, LoudspeakersRadio, TVRadio
+            };
+            foreach (Panel panel in panels)
+            {
+                if (panel.Visible)
+                {
+                    panel.Visible = false;
+                }
+            }
             List<RadioButton> radioButtons = new List<RadioButton>
             {
                 PanasonicCinemaRadio, PanasonicLoudspeakersRadio,
@@ -211,18 +223,31 @@ namespace SmartHouseWebForms
             };
             foreach (RadioButton rb in radioButtons)
             {
-                if (rb.Visible)
-                {
-                    rb.Checked = false;
-                    rb.Visible = false;
-                }
+                rb.Checked = false;
             }
         }
-        private void RadioButtonsUp(params RadioButton[] radioButtons)
+
+        private void SetImage(Device device, RepeaterItemEventArgs e)
         {
-            foreach (RadioButton rb in radioButtons)
+            if (device is AirConditioner)
             {
-                rb.Visible = true;
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/conditioner.jpg";
+            }
+            if (device is Camera)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/camera.jpg";
+            }
+            if (device is Fridge)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/fridge.jpg";
+            }
+            if (device is Garage)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/garage.jpg";
+            }
+            if (device is PanasonicHomeCinema)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/panasonicCinema.jpg";
             }
         }
     }

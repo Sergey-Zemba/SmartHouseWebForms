@@ -28,7 +28,7 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddAirConditioner;
+        protected global::System.Web.UI.WebControls.Button AddAirConditioner;
         
         /// <summary>
         /// AddCamera control.
@@ -37,7 +37,7 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddCamera;
+        protected global::System.Web.UI.WebControls.Button AddCamera;
         
         /// <summary>
         /// AddFridge control.
@@ -46,7 +46,7 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddFridge;
+        protected global::System.Web.UI.WebControls.Button AddFridge;
         
         /// <summary>
         /// AddGarage control.
@@ -55,7 +55,7 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddGarage;
+        protected global::System.Web.UI.WebControls.Button AddGarage;
         
         /// <summary>
         /// AddHomeCinema control.
@@ -64,7 +64,16 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddHomeCinema;
+        protected global::System.Web.UI.WebControls.Button AddHomeCinema;
+        
+        /// <summary>
+        /// CinemaRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel CinemaRadio;
         
         /// <summary>
         /// PanasonicCinemaRadio control.
@@ -91,7 +100,16 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddLoudspeakers;
+        protected global::System.Web.UI.WebControls.Button AddLoudspeakers;
+        
+        /// <summary>
+        /// LoudspeakersRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LoudspeakersRadio;
         
         /// <summary>
         /// PanasonicLoudspeakersRadio control.
@@ -118,7 +136,16 @@ namespace SmartHouseWebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddTV;
+        protected global::System.Web.UI.WebControls.Button AddTV;
+        
+        /// <summary>
+        /// TVRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel TVRadio;
         
         /// <summary>
         /// PanasonicTVRadio control.
