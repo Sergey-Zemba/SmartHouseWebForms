@@ -83,6 +83,14 @@ namespace SmartHouseWebForms
             {
                 Device device = (Device)e.Item.DataItem;
                 SetImage(device, e);
+                if (device.SwitchState == SwitchState.Off)
+                {
+                    ((ImageButton) e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/off.png";
+                }
+                else
+                {
+                    ((ImageButton)e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/on.png";
+                }
                 ((Label)e.Item.FindControl("State")).Text = device.ToString();
                 if (device is IBass && device.SwitchState == SwitchState.On)
                 {
@@ -231,23 +239,43 @@ namespace SmartHouseWebForms
         {
             if (device is AirConditioner)
             {
-                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/conditioner.jpg";
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/conditioner.jpg";
             }
             if (device is Camera)
             {
-                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/camera.jpg";
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/camera.jpg";
             }
             if (device is Fridge)
             {
-                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/fridge.jpg";
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/fridge.png";
             }
             if (device is Garage)
             {
-                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/garage.jpg";
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/garage.jpg";
             }
             if (device is PanasonicHomeCinema)
             {
-                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/panasonicCinema.jpg";
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/panasonicCinema.jpg";
+            }
+            if (device is SamsungHomeCinema)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/samsungCinema.jpg";
+            }
+            if (device is PanasonicLoudspeakers)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/panasonicLoudspeakers.jpg";
+            }
+            if (device is SamsungLoudspeakers)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/samsungLoudspeakers.jpg";
+            }
+            if (device is PanasonicTv)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/panasonicTV.jpg";
+            }
+            if (device is SamsungTv)
+            {
+                ((Panel)e.Item.FindControl("device")).BackImageUrl = "/Css/Devices/samsungTV.jpg";
             }
         }
     }

@@ -47,7 +47,7 @@
                         <br />
                         <asp:Label runat="server" ID="State"></asp:Label>
                         <br />
-                        <asp:LinkButton runat="server" CommandName="On/Off" Text="On/Off"></asp:LinkButton>&nbsp;
+                        <asp:ImageButton runat="server" ID="SwitchButton" CommandName="On/Off"></asp:ImageButton>&nbsp;
                     <asp:Panel runat="server" ID="BassPanel" Visible="False">
                         <asp:LinkButton runat="server" CommandName="Bass" Text="Bass"></asp:LinkButton>&nbsp;
                     </asp:Panel>

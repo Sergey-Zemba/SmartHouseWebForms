@@ -1,4 +1,7 @@
-﻿.add {
+﻿body {
+    background-color: cadetblue;
+}
+.add {
     width: 20%;
     height: 5%;
     background-color: red;
@@ -8,7 +11,6 @@
     float: left;
     width: 200px;
     height: 200px;
-    background-image: url("conditioner.jpg");
     margin: 5px;
     border-radius: 20px;
 }
