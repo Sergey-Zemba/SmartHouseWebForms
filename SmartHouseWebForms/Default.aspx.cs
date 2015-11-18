@@ -37,13 +37,9 @@ namespace SmartHouseWebForms
             {
                 model.Bass(id);
             }
-            else if (e.CommandName == "Open")
+            else if (e.CommandName == "Open/Close")
             {
-                model.Open(id);
-            }
-            else if (e.CommandName == "Close")
-            {
-                model.Close(id);
+                model.OpenClose(id);
             }
             else if (e.CommandName == "REC")
             {
@@ -83,38 +79,58 @@ namespace SmartHouseWebForms
             {
                 Device device = (Device)e.Item.DataItem;
                 SetImage(device, e);
+                ((ImageButton)e.Item.FindControl("DeleteButton")).ImageUrl = "/Css/Controls/Delete.png";
                 if (device.SwitchState == SwitchState.Off)
                 {
-                    ((ImageButton) e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/off.png";
+                    ((ImageButton) e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/Off.png";
                 }
                 else
                 {
-                    ((ImageButton)e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/on.png";
+                    ((ImageButton)e.Item.FindControl("SwitchButton")).ImageUrl = "/Css/Controls/On.png";
                 }
-                ((Label)e.Item.FindControl("State")).Text = device.ToString();
                 if (device is IBass && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("BassPanel")).Visible = true;
+                    ((ImageButton)e.Item.FindControl("BassButton")).ImageUrl = "/Css/Controls/Bass.png";
                 }
                 if (device is IOpenable && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("LockPanel")).Visible = true;
+                    if ((device as IOpenable).OpenState == OpenState.Open)
+                    {
+
+                        ((ImageButton) e.Item.FindControl("LockButton")).ImageUrl = "/Css/Controls/Open.png";
+                    }
+                    else
+                    {
+
+                        ((ImageButton)e.Item.FindControl("LockButton")).ImageUrl = "/Css/Controls/Close.png";
+                    }
                 }
                 if (device is IRecording && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("RecordingPanel")).Visible = true;
+                    ((ImageButton)e.Item.FindControl("RecButton")).ImageUrl = "/Css/Controls/Rec.png";
                 }
                 if (device is ITemperature && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("TemperaturePanel")).Visible = true;
+                    ((Label)e.Item.FindControl("Temperature")).Text = (device as ITemperature).CurrentTemperature + "°C";
+                    ((ImageButton)e.Item.FindControl("TempUp")).ImageUrl = "/Css/Controls/Up.png";
+                    ((ImageButton)e.Item.FindControl("TempDown")).ImageUrl = "/Css/Controls/Down.png";
                 }
                 if (device is IThreeDimensional && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("ThreeDPanel")).Visible = true;
+                    ((ImageButton)e.Item.FindControl("ThreeDButton")).ImageUrl = "/Css/Controls/3D.png";
                 }
                 if (device is IVolumeable && device.SwitchState == SwitchState.On)
                 {
                     ((Panel)e.Item.FindControl("VolumePanel")).Visible = true;
+                    ((Label)e.Item.FindControl("Volume")).Text = "Vol. " + (device as IVolumeable).CurrentVolume;
+                    ((ImageButton)e.Item.FindControl("VolUp")).ImageUrl = "/Css/Controls/Up.png";
+                    ((ImageButton)e.Item.FindControl("VolDown")).ImageUrl = "/Css/Controls/Down.png";
+                    ((ImageButton)e.Item.FindControl("Mute")).ImageUrl = "/Css/Controls/Mute.png";
                 }
             }
         }

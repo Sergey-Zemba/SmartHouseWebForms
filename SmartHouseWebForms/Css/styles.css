@@ -19,3 +19,16 @@
     position: absolute;
     left: 22%;
 }
+.delete {
+    background-image: url("Controls/delete.png");
+    width: 30px;
+    height: 30px;
+}
+.controls {
+    position: absolute;
+    bottom: 10px;
+}
+.control {
+    float: left;
+    margin-left: 5px;
+}

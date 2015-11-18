@@ -98,7 +98,7 @@ namespace SmartHouseWebForms.Model
             irw.Write(_devices);
         }
 
-        public void Open(int id)
+        public void OpenClose(int id)
         {
             _devices = irw.Read();
             Device device = GetDevice(_devices, id);
@@ -106,20 +106,12 @@ namespace SmartHouseWebForms.Model
             {
                 (device as IOpenable).Open();
             }
-            irw.Write(_devices);
-        }
-
-        public void Close(int id)
-        {
-            _devices = irw.Read();
-            Device device = GetDevice(_devices, id);
-            if ((device as IOpenable).OpenState == OpenState.Open)
+            else
             {
                 (device as IOpenable).Close();
             }
             irw.Write(_devices);
         }
-
         public void Rec(int id)
         {
             _devices = irw.Read();

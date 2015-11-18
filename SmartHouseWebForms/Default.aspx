@@ -37,44 +37,46 @@
                 <asp:RadioButton AutoPostBack="True" GroupName="TVGroup" ID="SamsungTVRadio" OnCheckedChanged="SamsungTVRadio_CheckedChanged" runat="server" Text="Samsung" />
             </asp:Panel>
         </div>
-        
-            <div class="container">
-                <asp:Repeater runat="server" OnItemCommand="OnItemCommand" OnItemDataBound="OnItemDataBound" ID="Repeater1">
+
+        <div class="container">
+            <asp:Repeater runat="server" OnItemCommand="OnItemCommand" OnItemDataBound="OnItemDataBound" ID="Repeater1">
                 <ItemTemplate>
                     <asp:Panel runat="server" ID="device" CssClass="item">
                         <asp:HiddenField ID="hid" runat="server" Value='<%#Eval("Id") %>' />
-                        <asp:LinkButton runat="server" CommandName="Delete" Text="Delete"></asp:LinkButton>
+                        <asp:ImageButton runat="server" ID="DeleteButton" CommandName="Delete"></asp:ImageButton>
                         <br />
-                        <asp:Label runat="server" ID="State"></asp:Label>
-                        <br />
-                        <asp:ImageButton runat="server" ID="SwitchButton" CommandName="On/Off"></asp:ImageButton>&nbsp;
-                    <asp:Panel runat="server" ID="BassPanel" Visible="False">
-                        <asp:LinkButton runat="server" CommandName="Bass" Text="Bass"></asp:LinkButton>&nbsp;
-                    </asp:Panel>
-                        <asp:Panel runat="server" ID="LockPanel" Visible="False">
-                            <asp:LinkButton runat="server" CommandName="Open" Text="Open"></asp:LinkButton>&nbsp;
-                        <asp:LinkButton runat="server" CommandName="Close" Text="Close"></asp:LinkButton>&nbsp;
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="RecordingPanel" Visible="False">
-                            <asp:LinkButton runat="server" CommandName="REC" Text="REC"></asp:LinkButton>&nbsp;
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="TemperaturePanel" Visible="False">
-                            <asp:LinkButton runat="server" CommandName="Warmer" Text="Temperature Up"></asp:LinkButton>&nbsp;
-                        <asp:LinkButton runat="server" CommandName="Cooler" Text="Temperature Down"></asp:LinkButton>&nbsp;
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="ThreeDPanel" Visible="False">
-                            <asp:LinkButton runat="server" CommandName="ThreeD" Text="3D"></asp:LinkButton>&nbsp;
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="VolumePanel" Visible="False">
-                            <asp:LinkButton runat="server" CommandName="Louder" Text="Sound Up"></asp:LinkButton>&nbsp;
-                        <asp:LinkButton runat="server" CommandName="Hush" Text="Sound Down"></asp:LinkButton>&nbsp;
-                        <asp:LinkButton runat="server" CommandName="Mute" Text="Mute"></asp:LinkButton>&nbsp;
-                        </asp:Panel>
+                        <div class="controls">
+                            <asp:ImageButton runat="server" ID="SwitchButton" CommandName="On/Off" CssClass="control"></asp:ImageButton>&nbsp;
+                            <asp:Panel runat="server" ID="TemperaturePanel" Visible="False" CssClass="control">
+                                <img src="Css/Controls/TempIcon.png"/>
+                                <asp:Label runat="server" ID="Temperature"></asp:Label>
+                                <asp:ImageButton runat="server" ID="TempUp" CommandName="Warmer"></asp:ImageButton>&nbsp;
+                                <asp:ImageButton runat="server" ID="TempDown" CommandName="Cooler"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="VolumePanel" Visible="False" CssClass="control">
+                                <asp:Label runat="server" ID="Volume"></asp:Label>
+                                <asp:ImageButton runat="server" ID="VolUp" CommandName="Louder"></asp:ImageButton>&nbsp;
+                                <asp:ImageButton runat="server" ID="VolDown" CommandName="Hush"></asp:ImageButton>&nbsp;
+                                <asp:ImageButton runat="server" ID="Mute" CommandName="Mute"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="BassPanel" Visible="False" CssClass="control">
+                                <asp:ImageButton runat="server" ID="BassButton" CommandName="Bass"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="LockPanel" Visible="False" CssClass="control">
+                                <asp:ImageButton runat="server" ID="LockButton" CommandName="Open/Close"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="RecordingPanel" Visible="False" CssClass="control">
+                                <asp:ImageButton runat="server" ID="RecButton" CommandName="REC"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="ThreeDPanel" Visible="False" CssClass="control">
+                                <asp:ImageButton runat="server" ID="ThreeDButton" CommandName="ThreeD"></asp:ImageButton>&nbsp;
+                            </asp:Panel>
+                        </div>
                     </asp:Panel>
                 </ItemTemplate>
             </asp:Repeater>
-            </div>
-        
+        </div>
+
     </form>
 </body>
 </html>
