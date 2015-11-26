@@ -2,7 +2,7 @@
 {
     public enum OpenState
     {
-        Close,
-        Open
+        Open,
+        Close
     }
 }

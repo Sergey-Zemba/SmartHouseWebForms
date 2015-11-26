@@ -70,6 +70,8 @@ namespace SmartHouseWebForms
                 model.Mute(id);
             }
             RadioButtonsDown();
+
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void OnItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -92,6 +94,14 @@ namespace SmartHouseWebForms
                 {
                     ((Panel)e.Item.FindControl("BassPanel")).Visible = true;
                     ((ImageButton)e.Item.FindControl("BassButton")).ImageUrl = "/Css/Controls/Bass.png";
+                    if ((device as IBass).BassState == BassState.On)
+                    {
+                        ((Image)e.Item.FindControl("BassIndicator")).Visible = true;
+                    }
+                    else
+                    {
+                        ((Image)e.Item.FindControl("BassIndicator")).Visible = false;
+                    }
                 }
                 if (device is IOpenable && device.SwitchState == SwitchState.On)
                 {
@@ -111,6 +121,14 @@ namespace SmartHouseWebForms
                 {
                     ((Panel)e.Item.FindControl("RecordingPanel")).Visible = true;
                     ((ImageButton)e.Item.FindControl("RecButton")).ImageUrl = "/Css/Controls/Rec.png";
+                    if ((device as IRecording).RecordMode == RecordMode.Record)
+                    {
+                        ((Image)e.Item.FindControl("RecIndicator")).Visible = true;
+                    }
+                    else
+                    {
+                        ((Image)e.Item.FindControl("RecIndicator")).Visible = false;
+                    }
                 }
                 if (device is ITemperature && device.SwitchState == SwitchState.On)
                 {
@@ -123,6 +141,14 @@ namespace SmartHouseWebForms
                 {
                     ((Panel)e.Item.FindControl("ThreeDPanel")).Visible = true;
                     ((ImageButton)e.Item.FindControl("ThreeDButton")).ImageUrl = "/Css/Controls/3D.png";
+                    if ((device as IThreeDimensional).Mode == TvMode.ThreeDMode)
+                    {
+                        ((Image)e.Item.FindControl("ThreeDIndicator")).Visible = true;
+                    }
+                    else
+                    {
+                        ((Image)e.Item.FindControl("ThreeDIndicator")).Visible = false;
+                    }
                 }
                 if (device is IVolumeable && device.SwitchState == SwitchState.On)
                 {
@@ -131,6 +157,14 @@ namespace SmartHouseWebForms
                     ((ImageButton)e.Item.FindControl("VolUp")).ImageUrl = "/Css/Controls/Up.png";
                     ((ImageButton)e.Item.FindControl("VolDown")).ImageUrl = "/Css/Controls/Down.png";
                     ((ImageButton)e.Item.FindControl("Mute")).ImageUrl = "/Css/Controls/Mute.png";
+                    if ((device as IVolumeable).MuteState == MuteState.MuteOn)
+                    {
+                        ((Image)e.Item.FindControl("MuteIndicator")).Visible = true;
+                    }
+                    else
+                    {
+                        ((Image)e.Item.FindControl("MuteIndicator")).Visible = false;
+                    }
                 }
             }
         }
@@ -139,24 +173,30 @@ namespace SmartHouseWebForms
         {
             model.Add("conditioner");
             RadioButtonsDown();
+
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddCamera_Click(object sender, EventArgs e)
         {
             model.Add("camera");
             RadioButtonsDown();
+
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddFridge_Click(object sender, EventArgs e)
         {
             model.Add("fridge");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddGarage_Click(object sender, EventArgs e)
         {
             model.Add("garage");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddHomeCinema_Click(object sender, EventArgs e)
@@ -170,12 +210,14 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicCinema");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungCinemaRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungCinema");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddLoudspeakers_Click(object sender, EventArgs e)
@@ -189,12 +231,14 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicLoudspeakers");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungLoudspeakersRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungLoudspeakers");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
         protected void AddTV_Click(object sender, EventArgs e)
         {
@@ -207,12 +251,14 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicTv");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungTVRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungTv");
             RadioButtonsDown();
+            Response.Redirect(Request.RawUrl);
         }
 
         private int GetId(RepeaterCommandEventArgs e)

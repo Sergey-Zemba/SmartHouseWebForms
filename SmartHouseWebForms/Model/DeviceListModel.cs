@@ -174,7 +174,14 @@ namespace SmartHouseWebForms.Model
         {
             _devices = irw.Read();
             Device device = GetDevice(_devices, id);
-            (device as IVolumeable).Mute();
+            if ((device as IVolumeable).MuteState == MuteState.MuteOff)
+            {
+                (device as IVolumeable).MuteOn();
+            }
+            else
+            {
+                (device as IVolumeable).MuteOff();
+            }
             irw.Write(_devices);
         }
         private Device GetDevice(List<Device> devices, int id)

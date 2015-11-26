@@ -9,7 +9,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     abstract class HomeCinema : Device, IVolumeable, IRecording
     {
 
-        public HomeCinema(int id, Tv tv, Loudspeakers loudspeakers) : base(id)
+        public HomeCinema(int id, Tv tv, Loudspeakers loudspeakers)
+            : base(id)
         {
             Tv = tv;
             Loudspeakers = loudspeakers;
@@ -18,6 +19,7 @@ namespace SmartHouseWebForms.SmartHouse.Devices
         public Loudspeakers Loudspeakers { get; set; }
         public RecordMode RecordMode { get { return Tv.RecordMode; } }
         public int CurrentVolume { get { return Loudspeakers.CurrentVolume; } }
+        public MuteState MuteState { get { return Loudspeakers.MuteState; } }
         public virtual void AddVolume()
         {
             Tv.AddVolume();
@@ -30,10 +32,15 @@ namespace SmartHouseWebForms.SmartHouse.Devices
             Loudspeakers.DecreaseVolume();
         }
 
-        public void Mute()
+        public void MuteOn()
         {
-            Tv.Mute();
-            Loudspeakers.Mute();
+            Tv.MuteOn();
+            Loudspeakers.MuteOn();
+        }
+        public void MuteOff()
+        {
+            Tv.MuteOff();
+            Loudspeakers.MuteOff();
         }
 
         public virtual void StartRecording()

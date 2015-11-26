@@ -9,6 +9,8 @@ namespace SmartHouseWebForms.SmartHouse.Devices
     abstract class Tv : Device, IVolumeable, IRecording
     {
         private int _volume;
+        private int _prevVolume;
+        private MuteState _muteState;
         private RecordMode _recordMode;
         public Tv(int id)
             : base(id)
@@ -17,9 +19,15 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 
         public RecordMode RecordMode { get { return _recordMode; } }
         public int CurrentVolume { get { return _volume; } }
+        public MuteState MuteState { get { return _muteState; } }
 
         public virtual void AddVolume()
         {
+            if (MuteState == MuteState.MuteOn)
+            {
+                MuteOff();
+                _volume = _prevVolume;
+            }
             if (_volume < 100)
             {
                 _volume++;
@@ -32,6 +40,11 @@ namespace SmartHouseWebForms.SmartHouse.Devices
 
         public virtual void DecreaseVolume()
         {
+            if (MuteState == MuteState.MuteOn)
+            {
+                MuteOff();
+                _volume = _prevVolume;
+            }
             if (_volume > 0)
             {
                 _volume--;
@@ -41,10 +54,17 @@ namespace SmartHouseWebForms.SmartHouse.Devices
                 _volume = 0;
             }
         }
-
-        public virtual void Mute()
+        public virtual void MuteOn()
         {
+            _prevVolume = CurrentVolume;
             _volume = 0;
+            _muteState = MuteState.MuteOn;
+        }
+
+        public virtual void MuteOff()
+        {
+            _volume = _prevVolume;
+            _muteState = MuteState.MuteOff;
         }
 
         public virtual void StartRecording()

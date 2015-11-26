@@ -10,25 +10,34 @@
 .item {
     float: left;
     width: 200px;
-    height: 200px;
+    height: 300px;
     margin: 5px;
     border-radius: 20px;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position-y: 40px;
 }
 .container {
     top: 5px;
     position: absolute;
     left: 22%;
 }
-.delete {
-    background-image: url("Controls/delete.png");
-    width: 30px;
-    height: 30px;
-}
 .controls {
-    position: absolute;
-    bottom: 10px;
+    margin-top: 230px;
 }
 .control {
+    float: left;
+    margin-left: 5px;
+}
+.delete {
+    margin-right: 5px;
+    margin-top: 5px;
+    float: right;
+}
+.indicators {
+    margin-top: 5px;
+}
+.indicator {
     float: left;
     margin-left: 5px;
 }

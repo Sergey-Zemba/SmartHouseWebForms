@@ -103,6 +103,7 @@
     <Compile Include="SmartHouse\Interfaces\IVolumeable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartHouse\States\BassState.cs" />
+    <Compile Include="SmartHouse\States\MuteState.cs" />
     <Compile Include="SmartHouse\States\OpenState.cs" />
     <Compile Include="SmartHouse\States\RecordMode.cs" />
     <Compile Include="SmartHouse\States\SwitchState.cs" />

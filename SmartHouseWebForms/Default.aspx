@@ -43,12 +43,17 @@
                 <ItemTemplate>
                     <asp:Panel runat="server" ID="device" CssClass="item">
                         <asp:HiddenField ID="hid" runat="server" Value='<%#Eval("Id") %>' />
-                        <asp:ImageButton runat="server" ID="DeleteButton" CommandName="Delete"></asp:ImageButton>
-                        <br />
+                        <asp:ImageButton runat="server" ID="DeleteButton" CommandName="Delete" CssClass="delete"></asp:ImageButton>
+                        <div class="indicators">
+                            <asp:Image runat="server" ID="RecIndicator" AlternateText="Recording" ImageUrl="Css/Controls/recind.jpg" Visible="False" CssClass="indicator"/>
+                            <asp:Image runat="server" ID="MuteIndicator" AlternateText="Mute" ImageUrl="Css/Controls/muteind.png" Visible="False" CssClass="indicator"/>
+                            <asp:Image runat="server" ID="BassIndicator" AlternateText="Bass" ImageUrl="Css/Controls/bassind.png" Visible="False" CssClass="indicator"/>
+                            <asp:Image runat="server" ID="ThreeDIndicator" AlternateText="3D" ImageUrl="Css/Controls/3Dind.png" Visible="False" CssClass="indicator"/>
+                        </div>
                         <div class="controls">
                             <asp:ImageButton runat="server" ID="SwitchButton" CommandName="On/Off" CssClass="control"></asp:ImageButton>&nbsp;
                             <asp:Panel runat="server" ID="TemperaturePanel" Visible="False" CssClass="control">
-                                <img src="Css/Controls/TempIcon.png"/>
+                                <img src="Css/Controls/TempIcon.png" alt="temp"/>
                                 <asp:Label runat="server" ID="Temperature"></asp:Label>
                                 <asp:ImageButton runat="server" ID="TempUp" CommandName="Warmer"></asp:ImageButton>&nbsp;
                                 <asp:ImageButton runat="server" ID="TempDown" CommandName="Cooler"></asp:ImageButton>&nbsp;
