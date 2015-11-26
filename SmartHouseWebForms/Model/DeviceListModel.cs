@@ -59,6 +59,7 @@ namespace SmartHouseWebForms.Model
                     break;
             }
             irw.Write(_devices);
+            HttpContext.Current.Response.Redirect(HttpContext.Current.Request.RawUrl);
         }
         public void Delete(int id)
         {

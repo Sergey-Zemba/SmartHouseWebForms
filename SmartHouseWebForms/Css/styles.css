@@ -1,26 +1,38 @@
 ﻿body {
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: cadetblue;
 }
+.addButtons {
+    margin-top: 80px;
+}
 .add {
+    min-width: 150px;
     width: 20%;
     height: 5%;
     background-color: red;
     cursor: pointer;
+    color: white;
+    border-radius: 10px;
 }
 .item {
     float: left;
     width: 200px;
     height: 300px;
     margin: 5px;
+    border: 1px dotted gainsboro;
     border-radius: 20px;
     background-repeat: no-repeat;
     background-color: white;
     background-position-y: 40px;
 }
 .container {
-    top: 5px;
+    margin-left: 100px;
+    margin-top: 80px;
+    top: 2%;
     position: absolute;
-    left: 22%;
+    left: 19%;
 }
 .controls {
     margin-top: 230px;
@@ -40,4 +52,14 @@
 .indicator {
     float: left;
     margin-left: 5px;
+}
+header {
+    height: 1%;
+}
+#logo{
+    min-width: 150px;
+    width: 20%;
+}
+#logo>img{
+    vertical-align: middle;
 }

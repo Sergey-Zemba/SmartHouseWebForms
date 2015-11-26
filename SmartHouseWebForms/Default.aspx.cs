@@ -70,7 +70,6 @@ namespace SmartHouseWebForms
                 model.Mute(id);
             }
             RadioButtonsDown();
-
             Response.Redirect(Request.RawUrl);
         }
 
@@ -173,30 +172,24 @@ namespace SmartHouseWebForms
         {
             model.Add("conditioner");
             RadioButtonsDown();
-
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddCamera_Click(object sender, EventArgs e)
         {
             model.Add("camera");
             RadioButtonsDown();
-
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddFridge_Click(object sender, EventArgs e)
         {
             model.Add("fridge");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddGarage_Click(object sender, EventArgs e)
         {
             model.Add("garage");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddHomeCinema_Click(object sender, EventArgs e)
@@ -210,14 +203,12 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicCinema");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungCinemaRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungCinema");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void AddLoudspeakers_Click(object sender, EventArgs e)
@@ -231,14 +222,12 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicLoudspeakers");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungLoudspeakersRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungLoudspeakers");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
         protected void AddTV_Click(object sender, EventArgs e)
         {
@@ -251,14 +240,12 @@ namespace SmartHouseWebForms
         {
             model.Add("panasonicTv");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void SamsungTVRadio_CheckedChanged(object sender, EventArgs e)
         {
             model.Add("samsungTv");
             RadioButtonsDown();
-            Response.Redirect(Request.RawUrl);
         }
 
         private int GetId(RepeaterCommandEventArgs e)
