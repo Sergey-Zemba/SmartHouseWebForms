@@ -27,18 +27,18 @@
                 <br />
                 <asp:Button class="add" ID="AddHomeCinema" runat="server" OnClick="AddHomeCinema_Click" Text="Add Home Cinema" />
                 <br />
-                <asp:Panel runat="server" ID="CinemaRadio" Visible="False">
+                <asp:Panel runat="server" ID="CinemaRadio" Visible="False" CssClass="radio">
                     <asp:RadioButton AutoPostBack="True" GroupName="HomeCinemaGroup" ID="PanasonicCinemaRadio" OnCheckedChanged="PanasonicCinemaRadio_CheckedChanged" runat="server" Text="Panasonic" />
                     <asp:RadioButton AutoPostBack="True" GroupName="HomeCinemaGroup" ID="SamsungCinemaRadio" OnCheckedChanged="SamsungCinemaRadio_CheckedChanged" runat="server" Text="Samsung" />
                 </asp:Panel>
                 <asp:Button class="add" ID="AddLoudspeakers" runat="server" OnClick="AddLoudspeakers_Click" Text="Add Loudspeakers" />
                 <br />
-                <asp:Panel runat="server" ID="LoudspeakersRadio" Visible="False">
+                <asp:Panel runat="server" ID="LoudspeakersRadio" Visible="False" CssClass="radio">
                     <asp:RadioButton AutoPostBack="True" GroupName="LoudspeakersGroup" ID="PanasonicLoudspeakersRadio" OnCheckedChanged="PanasonicLoudspeakersRadio_CheckedChanged" runat="server" Text="Panasonic" />
                     <asp:RadioButton AutoPostBack="True" GroupName="LoudspeakersGroup" ID="SamsungLoudspeakersRadio" OnCheckedChanged="SamsungLoudspeakersRadio_CheckedChanged" runat="server" Text="Samsung" />
                 </asp:Panel>
                 <asp:Button class="add" ID="AddTV" runat="server" OnClick="AddTV_Click" Text="Add TV" />
-                <asp:Panel runat="server" ID="TVRadio" Visible="False">
+                <asp:Panel runat="server" ID="TVRadio" Visible="False" CssClass="radio">
                     <asp:RadioButton AutoPostBack="True" GroupName="TVGroup" ID="PanasonicTVRadio" OnCheckedChanged="PanasonicTVRadio_CheckedChanged" runat="server" Text="Panasonic" />
                     <asp:RadioButton AutoPostBack="True" GroupName="TVGroup" ID="SamsungTVRadio" OnCheckedChanged="SamsungTVRadio_CheckedChanged" runat="server" Text="Samsung" />
                 </asp:Panel>
@@ -88,7 +88,6 @@
                 </asp:Repeater>
             </div>
         </div>
-
     </form>
 </body>
 </html>
